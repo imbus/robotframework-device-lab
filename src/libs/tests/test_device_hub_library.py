@@ -8,7 +8,7 @@ from DeviceHubLibrary.checks import Check
 from DeviceHubLibrary.model import Expectation, Reading
 from DeviceHubLibrary.profile import ProfileError, load_profile
 
-TESTDATA = Path(__file__).parents[2] / "testdata" / "devices"
+TESTDATA = Path(__file__).parents[3] / "data" / "devices"
 
 
 def test_load_profile_reads_all_sections():

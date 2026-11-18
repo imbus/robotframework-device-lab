@@ -1,8 +1,12 @@
 """Schlanker REST-Client für DeviceHub mit verständlichen Fehlermeldungen."""
 
+import logging
 from typing import Any
 
 import httpx
+
+# httpx meldet jede Anfrage als INFO; im Robot-Log würde das die Schritte überdecken.
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 
 class DeviceHubError(Exception):

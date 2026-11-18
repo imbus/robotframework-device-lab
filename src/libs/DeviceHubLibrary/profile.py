@@ -1,4 +1,4 @@
-"""Lädt ein Geräteprofil (testdata/devices/*.json) in Werte-Objekte.
+"""Lädt ein Geräteprofil (data/devices/*.json) in Werte-Objekte.
 
 Fehlerhafte Dateien scheitern mit einer Meldung, die Feld und Erwartung nennt, z. B.:
 Geräteprofil kaputt.json fehlerhaft: Feld 'control.repetitions' ist "drei"

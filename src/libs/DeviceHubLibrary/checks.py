@@ -1,5 +1,6 @@
 """Prüft Messwerte gegen die Soll-Werte und stellt das Ergebnis als HTML-Tabelle dar."""
 
+from collections.abc import Callable
 from dataclasses import dataclass
 from html import escape
 
@@ -38,29 +39,46 @@ def check_readings(readings: list[Reading], profile: DeviceProfile) -> list[Chec
     return [Check(reading, profile.point(reading.point).expected) for reading in readings]
 
 
-def failure_message(checks: list[Check]) -> str:
-    failed = [check for check in checks if not check.passed]
-    lines = [f"{len(failed)} von {len(checks)} Messwerten weichen von den Soll-Werten ab:"]
-    lines += [_describe(check) for check in failed[:_MAX_LISTED_FAILURES]]
+def voltage_failures(checks: list[Check]) -> str | None:
+    """Fehlermeldung für Spannungen außerhalb der Toleranz, None wenn alle passen."""
+    failed = [check for check in checks if not check.voltage_ok]
+    return _message(
+        checks,
+        failed,
+        "Spannungen außerhalb der Toleranz",
+        lambda r, e: (
+            f"erwartet {e.voltage_v:.3f} V ± {e.tolerance_v:.3f} V, gemessen {r.voltage_v:.3f} V"
+        ),
+    )
+
+
+def temperature_failures(checks: list[Check]) -> str | None:
+    """Fehlermeldung für Temperaturen über dem Grenzwert, None wenn alle passen."""
+    failed = [check for check in checks if not check.temperature_ok]
+    return _message(
+        checks,
+        failed,
+        "Temperaturen über dem Grenzwert",
+        lambda r, e: f"{r.temperature_c:.1f} °C, erlaubt höchstens {e.max_temperature_c:g} °C",
+    )
+
+
+def _message(
+    checks: list[Check],
+    failed: list[Check],
+    title: str,
+    describe: Callable[[Reading, Expectation], str],
+) -> str | None:
+    if not failed:
+        return None
+    lines = [f"{len(failed)} von {len(checks)} Messwerten: {title}"]
+    lines += [
+        f"{c.reading.point} Messung {c.reading.repetition}: {describe(c.reading, c.expected)}"
+        for c in failed[:_MAX_LISTED_FAILURES]
+    ]
     if len(failed) > _MAX_LISTED_FAILURES:
         lines.append(f"… und {len(failed) - _MAX_LISTED_FAILURES} weitere (siehe Tabelle im Log)")
     return "\n".join(lines)
-
-
-def _describe(check: Check) -> str:
-    reading, expected = check.reading, check.expected
-    problems = []
-    if not check.voltage_ok:
-        problems.append(
-            f"erwartet {expected.voltage_v:.3f} V ± {expected.tolerance_v:.3f} V, "
-            f"gemessen {reading.voltage_v:.3f} V"
-        )
-    if not check.temperature_ok:
-        problems.append(
-            f"Temperatur {reading.temperature_c:.1f} °C, "
-            f"erlaubt höchstens {expected.max_temperature_c:g} °C"
-        )
-    return f"{reading.point} Messung {reading.repetition}: " + "; ".join(problems)
 
 
 _HEADERS = ("Messpunkt", "Nr.", "Soll", "Ist", "Abweichung", "Toleranz", "Temperatur", "Ergebnis")

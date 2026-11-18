@@ -21,22 +21,24 @@ dev = [
 ]
 
 [tool.pytest.ini_options]
-testpaths = ["libraries/tests"]
-pythonpath = ["libraries"]
+testpaths = ["src/libs/tests"]
+pythonpath = ["src/libs"]
 
 # Prüfungen im Editor (Mypy, Ruff); 100 Zeichen pro Zeile bleiben auf dem Beamer lesbar.
 [tool.mypy]
-mypy_path = "libraries"
+mypy_path = "src/libs"
 
 [tool.ruff]
 line-length = 100
 
 # Robot-Framework-Konvention: Das Library-Paket heißt wie die Klasse (DeviceHubLibrary).
 [tool.ruff.lint.per-file-ignores]
-"libraries/DeviceHubLibrary/__init__.py" = ["N999"]
+"src/libs/DeviceHubLibrary/__init__.py" = ["N999"]
 
-# Deutsche Keyword-Namen: nur das erste Wort groß, z. B. „Gerät hochfahren“ (siehe CLAUDE.md)
+# Deutsche Keyword-Namen: nur das erste Wort groß, z. B. „Gerät hochfahren“ (siehe CLAUDE.md).
+# Zusätzlich an: kein Sleep (CLAUDE.md: gewartet wird auf Zustände).
 [tool.robocop.lint]
+extend-select = ["sleep-keyword-used"]
 configure = [
     "wrong-case-in-keyword-name.convention=first_word_capitalized",
     "wrong-case-in-keyword-call.convention=first_word_capitalized",
