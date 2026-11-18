@@ -1,0 +1,29 @@
+{
+  "device": { "model": "MM-100", "variant": "B" },
+  "environment": {
+    "registers": {
+      "setpoint_voltage": 41001,
+      "measured_voltage": 31001,
+      "temperature": 31003,
+      "status": 31010
+    }
+  },
+  "control": { "settle_timeout_s": 15, "repetitions": 3 },
+  "measurement_points": [
+    {
+      "name": "MP1",
+      "input": { "voltage_v": 10.0 },
+      "expected": { "voltage_v": 10.0, "tolerance_v": 0.1, "max_temperature_c": 70 }
+    },
+    {
+      "name": "MP2",
+      "input": { "voltage_v": 48.0 },
+      "expected": { "voltage_v": 48.0, "tolerance_v": 0.48, "max_temperature_c": 70 }
+    },
+    {
+      "name": "MP3",
+      "input": { "voltage_v": 110.0 },
+      "expected": { "voltage_v": 110.0, "tolerance_v": 1.1, "max_temperature_c": 70 }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# Robot-Framework-Konfiguration für RobotCode (VS Code und Kommandozeile).
+# Standard: Variante A.  Profil wählen: uv run robotcode --profile variante-b robot
+# Persönliche Abweichungen gehören in .robot.toml (wird nicht eingecheckt).
+
+paths = ["tests"]
+output-dir = "results"
+python-path = ["libraries"]
+
+[variables]
+DEVICEHUB_URL = "http://127.0.0.1:8080"
+GERAETEPROFIL = "testdata/devices/variante_a.json"
+
+[profiles.variante-a]
+description = "Messmodul MM-100, Variante A"
+extend-variables = { GERAETEPROFIL = "testdata/devices/variante_a.json" }
+
+[profiles.variante-b]
+description = "Messmodul MM-100, Variante B"
+extend-variables = { GERAETEPROFIL = "testdata/devices/variante_b.json" }
+
+[profiles.ci]
+description = "Jenkins: ohne Web-UI-Tests, ohne Farben"
+extend-exclude = ["ui"]
+console-colors = "off"
