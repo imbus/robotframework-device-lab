@@ -100,6 +100,21 @@ DEVICE_SPECS = (
             "status": 31010,
         },
     ),
+    # Variante C hat noch kein Geräteprofil: Demo „Neues Gerät in 60 Sekunden“
+    DeviceSpec(
+        device_id="mm100-c",
+        model="MM-100",
+        variant="C",
+        serial_number="MM100C-2026-0052",
+        firmware_version="3.1.0",
+        max_voltage_v=250.0,
+        registers={
+            "setpoint_voltage": 42001,
+            "measured_voltage": 32001,
+            "temperature": 32003,
+            "status": 32010,
+        },
+    ),
 )
 
 
@@ -270,3 +285,9 @@ class Simulation:
 
     def has_fault(self, fault: Fault) -> bool:
         return fault in self.faults
+
+    def reset(self) -> None:
+        """Alles zurück auf Anfang: keine Fehler, alle Geräte aus."""
+        self.faults.clear()
+        for device in self.devices.values():
+            device.reset()

@@ -17,7 +17,7 @@ sim = Simulation.from_env()
 app = FastAPIOffline(
     title="DeviceHub",
     version="1.0.0",
-    description="Simuliertes Messmodul MM-100 (Varianten A und B) für die Robot-Framework-Demos.",
+    description="Simuliertes Messmodul MM-100 (Varianten A, B und C) für die Robot-Framework-Demos.",
 )
 
 
@@ -131,6 +131,12 @@ async def add_fault(request: FaultRequest) -> dict:
 async def clear_faults() -> dict:
     sim.faults.clear()
     return {"faults": []}
+
+
+@app.post("/sim/reset", tags=["Simulation"], summary="Alle Fehler löschen, alle Geräte aus")
+async def reset_simulation() -> dict:
+    sim.reset()
+    return {"faults": [], "devices": "OFF"}
 
 
 @app.get("/ui/devices/{device_id}", response_class=HTMLResponse, include_in_schema=False)
