@@ -23,6 +23,13 @@ Ideen ergänzen, statt sie sofort zu bauen.
 - Parallele Messgruppen, weitere Fehlerarten (Timeout, falscher Wert)
 - Anbindung an ein Testmanagement-Werkzeug
 
+## Beispiele (bewusst weggelassen, Botschaft tragen vorhandene Dateien)
+- Ordner `beispiele/` mit eigenem Kontrastpaar „Einzelschritte vs. Prüfvorschrift“ – trägt heute
+  `tests/antipatterns/` ↔ `tests/02_messung/`
+- Beispiel „Robot beschreibt, Python rechnet“ mit typisiertem Python-Keyword
+- Beispieldatei „bereit für die Pipeline“ (Tags, Metadata, drei Aufrufe) – tragen heute Profile und Jenkins
+- Übungen mit Lückentexten für Teilnehmende
+
 ## Weiterverwendung
 - Repo als Vorlage für weitere Projekte verallgemeinern
 - Diagramme und Folien als wiederverwendbares Schulungsmodul
