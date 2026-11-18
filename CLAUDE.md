@@ -1,4 +1,4 @@
-# CLAUDE.md – rf-device-lab
+# CLAUDE.md – robotframework-device-lab
 
 Kontext für jede Claude-Code-Session in diesem Repo. Erst lesen, dann arbeiten.
 
@@ -29,14 +29,14 @@ die Tests bleiben generisch.
 
 | Was | Name |
 |---|---|
-| Repo | `rf-device-lab` |
+| Repo | `robotframework-device-lab` |
 | Mock-Werkzeug (REST) | `DeviceHub` (Python-Paket `devicehub`) |
 | Gerät | Messmodul `MM-100`, Varianten `A` und `B` |
 | Python-Library | `DeviceHubLibrary` |
 
 ## Tech-Stack (Versionen beim ersten Setup festschreiben, `uv.lock` einchecken)
 
-- Python 3.12, **uv**
+- Python 3.14, **uv**
 - Robot Framework 7.x, **RobotCode** (VS Code) mit `robot.toml`
 - Browser Library für den einen Web-UI-Test
 - FastAPI + Uvicorn für den Mock
@@ -83,8 +83,8 @@ Gegliedert nach Testdatenarten:
 {
   "device":      { "model": "MM-100", "variant": "A" },
   "environment": { "registers": { "setpoint_voltage": 40001, "measured_voltage": 30001,
-                                  "temperature": 30002, "status": 30010 } },
-  "control":     { "settle_timeout_s": 30, "repetitions": 3 },
+                                  "temperature": 30003, "status": 30010 } },
+  "control":     { "settle_timeout_s": 15, "repetitions": 3 },
   "measurement_points": [
     { "name": "MP1", "input": { "voltage_v": 5.0 },
       "expected": { "voltage_v": 5.0, "tolerance_v": 0.05, "max_temperature_c": 60 } }

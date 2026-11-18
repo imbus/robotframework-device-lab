@@ -7,7 +7,7 @@ Leitlinie: **Workshop zuerst**, alles Weitere steht in `LEUCHTTURM.md`.
 ## So startest du eine Session
 
 ```bash
-cd rf-device-lab
+cd robotframework-device-lab
 claude
 ```
 
@@ -30,7 +30,7 @@ Danach: Kriterien kurz selbst prüfen, committen, Tag `s1-done`.
 | S6 (optional) | KI-Joker als Screencast | nur bei Zeit | S1 |
 
 Parallel arbeiten: zweite Session in einem eigenen Worktree
-(`git worktree add ../rf-device-lab-folien -b folien`).
+(`git worktree add ../robotframework-device-lab-folien -b folien`).
 
 ## Was nicht ins öffentliche Repo gehört
 

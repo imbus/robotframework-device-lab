@@ -13,7 +13,7 @@ Voraussetzung: S2 ist fertig.
    die vier Schichtregeln; Link auf `docs/keywords/`.
 3. **`just docs`:** LibDoc für die Library und die Resources nach `docs/keywords/`.
 4. **Jenkins lokal**, so einfach wie möglich:
-   - `docker-compose.yml` mit Jenkins (LTS, eigenes kleines Image mit Python 3.12 und uv)
+   - `docker-compose.yml` mit Jenkins (LTS, eigenes kleines Image mit Python 3.14 und uv)
      und dem Mock im selben Netz (dafür ein schlankes Dockerfile für `devicehub`)
    - `Jenkinsfile`: `Lint` (Robocop) → `Unit` (pytest) → `Robot` (Profil `ci`, ohne Tag `ui`)
      → Ergebnisse archivieren und mit dem Robot-Framework-Plugin anzeigen
