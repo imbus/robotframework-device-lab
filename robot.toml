@@ -4,21 +4,48 @@
 
 paths = ["tests"]
 output-dir = "results"
-python-path = ["libraries"]
+# "." = Repo-Wurzel: Resources werden als src/resources/… importiert, ohne ../
+# src/libs: Python-Libraries, z. B. "Library    DeviceHubLibrary"
+python-path = [".", "src/libs"]
+# Das absichtlich schlechte Beispiel läuft nur mit: just antipattern
+excludes = ["antipattern"]
 
 [variables]
 DEVICEHUB_URL = "http://127.0.0.1:8080"
-GERAETEPROFIL = "testdata/devices/variante_a.json"
+GERAETEPROFIL = "data/devices/variante_a.json"
+SIMULATIONSFEHLER = ""
 
 [profiles.variante-a]
 description = "Messmodul MM-100, Variante A"
-extend-variables = { GERAETEPROFIL = "testdata/devices/variante_a.json" }
+extend-variables = { GERAETEPROFIL = "data/devices/variante_a.json" }
 
 [profiles.variante-b]
 description = "Messmodul MM-100, Variante B"
-extend-variables = { GERAETEPROFIL = "testdata/devices/variante_b.json" }
+extend-variables = { GERAETEPROFIL = "data/devices/variante_b.json" }
 
 [profiles.ci]
 description = "Jenkins: ohne Web-UI-Tests, ohne Farben"
-extend-exclude = ["ui"]
+extend-excludes = ["ui"]
 console-colors = "off"
+
+[profiles.antipattern]
+description = "Absichtlich schlechtes Beispiel (Block 7)"
+paths = ["tests/antipatterns"]
+excludes = []
+
+# Fehler-Quiz (Block 4): Jedes Profil lässt die Messung aus einem anderen Grund scheitern.
+# Starten mit: just quiz 1   (Auflösung in plan/HANDOFF.md, Abschnitt S2)
+[profiles.quiz-1]
+description = "Fehler-Quiz 1"
+paths = ["tests/02_messung"]
+extend-variables = { SIMULATIONSFEHLER = "hang" }
+
+[profiles.quiz-2]
+description = "Fehler-Quiz 2"
+paths = ["tests/02_messung"]
+extend-variables = { GERAETEPROFIL = "data/quiz/quiz_2.json" }
+
+[profiles.quiz-3]
+description = "Fehler-Quiz 3"
+paths = ["tests/02_messung"]
+extend-variables = { SIMULATIONSFEHLER = "drift" }
