@@ -1,0 +1,22 @@
+# Python und uv
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Robot Framework
+results/
+log.html
+report.html
+output.xml
+browser/
+playwright-log.txt
+
+# Persönliche RobotCode-Einstellungen
+.robot.toml
+
+# Editor und Betriebssystem
+.DS_Store
+.idea/

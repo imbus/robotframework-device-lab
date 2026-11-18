@@ -1,0 +1,43 @@
+[project]
+name = "robotframework-device-lab"
+version = "0.1.0"
+description = "Vorführprojekt: Robot Framework testet ein simuliertes Messgerät über REST"
+license = "MIT"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "fastapi>=0.163,<1",
+    "fastapi-offline>=1.7,<2",
+    "httpx>=0.28,<1",
+    "robotcode[runner]>=2.8,<3",
+    "robotframework>=7.5,<8",
+    "robotframework-browser>=21,<22",
+    "robotframework-robocop>=9.4,<10",
+    "uvicorn>=0.54,<1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2,<10",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["libraries/tests"]
+pythonpath = ["libraries"]
+
+# Prüfungen im Editor (Mypy, Ruff); 100 Zeichen pro Zeile bleiben auf dem Beamer lesbar.
+[tool.mypy]
+mypy_path = "libraries"
+
+[tool.ruff]
+line-length = 100
+
+# Robot-Framework-Konvention: Das Library-Paket heißt wie die Klasse (DeviceHubLibrary).
+[tool.ruff.lint.per-file-ignores]
+"libraries/DeviceHubLibrary/__init__.py" = ["N999"]
+
+# Deutsche Keyword-Namen: nur das erste Wort groß, z. B. „Gerät hochfahren“ (siehe CLAUDE.md)
+[tool.robocop.lint]
+configure = [
+    "wrong-case-in-keyword-name.convention=first_word_capitalized",
+    "wrong-case-in-keyword-call.convention=first_word_capitalized",
+]
