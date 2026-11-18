@@ -35,24 +35,24 @@
 
   <!-- Haus 1: das eigene Testprojekt -->
   <polygon points="540,280 820,110 1100,280" fill="#4C6369"/>
-  <rect x="560" y="280" width="520" height="140" fill="#00946C"/>
-  <rect x="560" y="420" width="520" height="140" fill="#4086C2"/>
-  <rect x="560" y="560" width="520" height="140" fill="#005076"/>
+  <rect x="560" y="280" width="520" height="140" fill="#B3DFD3"/>
+  <rect x="560" y="420" width="520" height="140" fill="#00946C"/>
+  <rect x="560" y="560" width="520" height="140" fill="#4086C2"/>
   <rect x="540" y="700" width="560" height="130" fill="#4C6369"/>
   <g text-anchor="middle">
     <text x="820" y="255" font-size="40" class="fett weiss">Testprojekt</text>
-    <text x="820" y="340" font-size="44" class="fett weiss">Workflows</text>
-    <text x="820" y="388" font-size="36" class="weiss">die Wohnräume</text>
-    <text x="820" y="504" font-size="40" class="fett weiss">Fachliche Keywords</text>
-    <text x="820" y="644" font-size="40" class="fett weiss">Technische Keywords</text>
+    <text x="820" y="340" font-size="44" class="fett dunkel">Tests</text>
+    <text x="820" y="388" font-size="36" class="dunkel">die Wohnräume</text>
+    <text x="820" y="504" font-size="40" class="fett weiss">Workflows</text>
+    <text x="820" y="644" font-size="40" class="fett weiss">Fachliche Keywords</text>
     <text x="820" y="757" font-size="40" class="fett weiss">Python-Libraries</text>
-    <text x="820" y="803" font-size="36" class="weiss">das Fundament</text>
+    <text x="820" y="803" font-size="36" class="weiss">technische Schicht</text>
   </g>
 
-  <!-- Klammer: drei Etagen = Keyword-Schichten -->
-  <path d="M1110,284 H1125 V696 H1110 M1125,490 H1140" fill="none" stroke="#005076" stroke-width="4"/>
-  <text x="1155" y="478" font-size="40" class="fett dunkel">Etagen =</text>
-  <text x="1155" y="522" font-size="36">Keyword-Schichten</text>
+  <!-- Klammer: die Etagen unter den Wohnräumen = Schichten; das Fundament ist die technische Schicht -->
+  <path d="M1110,424 H1125 V696 H1110 M1125,560 H1140" fill="none" stroke="#005076" stroke-width="4"/>
+  <text x="1155" y="548" font-size="40" class="fett dunkel">Etagen =</text>
+  <text x="1155" y="592" font-size="36">Schichten</text>
 
   <!-- Haus 2: ein weiteres Projekt im selben Netz -->
   <polygon points="1480,360 1670,230 1860,360" fill="#4C6369" fill-opacity="0.4"/>

@@ -29,41 +29,34 @@
   <text x="520" y="64" font-size="40"><tspan class="fett gruen">Beispiel:</tspan> <tspan class="fett dunkel">Messwerte erhalten</tspan></text>
 
   <!-- Workflow -->
-  <rect x="90" y="90" width="380" height="140" rx="18" fill="#00946C"/>
-  <rect x="490" y="90" width="895" height="140" rx="18" fill="#00946C" fill-opacity="0.12"/>
-  <text x="120" y="152" font-size="46" class="fett weiss">Workflow</text>
-  <text x="120" y="200" font-size="36" class="weiss">liest: Fachbereich</text>
-  <text x="520" y="172" font-size="36" class="mono fett dunkel">Messung durchführen</text>
+  <rect x="90" y="90" width="380" height="200" rx="18" fill="#00946C"/>
+  <rect x="490" y="90" width="895" height="200" rx="18" fill="#00946C" fill-opacity="0.12"/>
+  <text x="120" y="178" font-size="46" class="fett weiss">Workflow</text>
+  <text x="120" y="228" font-size="36" class="weiss">liest: Fachbereich</text>
+  <text x="520" y="202" font-size="36" class="mono fett dunkel">Messung durchführen</text>
 
   <!-- Fachlich -->
-  <rect x="90" y="266" width="380" height="140" rx="18" fill="#4086C2"/>
-  <rect x="490" y="266" width="895" height="140" rx="18" fill="#4086C2" fill-opacity="0.12"/>
-  <text x="120" y="328" font-size="46" class="fett weiss">Fachlich</text>
-  <text x="120" y="376" font-size="36" class="weiss">liest: Testdesign</text>
-  <text x="520" y="348" font-size="36" class="mono fett dunkel">Messwerte erhalten</text>
+  <rect x="90" y="330" width="380" height="200" rx="18" fill="#4086C2"/>
+  <rect x="490" y="330" width="895" height="200" rx="18" fill="#4086C2" fill-opacity="0.12"/>
+  <text x="120" y="418" font-size="46" class="fett weiss">Fachlich</text>
+  <text x="120" y="468" font-size="36" class="weiss">liest: Testdesign</text>
+  <text x="520" y="442" font-size="36" class="mono fett dunkel">Messwerte erhalten</text>
 
-  <!-- Technisch -->
-  <rect x="90" y="442" width="380" height="140" rx="18" fill="#005076"/>
-  <rect x="490" y="442" width="895" height="140" rx="18" fill="#005076" fill-opacity="0.12"/>
-  <text x="120" y="504" font-size="46" class="fett weiss">Technisch</text>
-  <text x="120" y="552" font-size="36" class="weiss">liest: Automatisierung</text>
-  <text x="520" y="524" font-size="36" class="mono fett dunkel">Messgruppe ausführen</text>
-
-  <!-- Library (Python): die Schleife über die Messpunkte lebt hier -->
-  <rect x="90" y="618" width="380" height="232" rx="18" fill="#4C6369"/>
-  <rect x="490" y="618" width="895" height="232" rx="18" fill="#4C6369" fill-opacity="0.12"/>
-  <text x="120" y="718" font-size="46" class="fett weiss">Library / Python</text>
-  <text x="120" y="768" font-size="36" class="weiss">liest: Entwicklung</text>
-  <text x="520" y="674" font-size="36" class="mono fett dunkel">Run Measurement Group</text>
-  <text x="520" y="722" font-size="36" class="fett gruen">für jeden Messpunkt:</text>
-  <rect x="524" y="738" width="8" height="86" rx="4" fill="#00946C"/>
-  <text x="556" y="768" font-size="36" class="mono dunkel" xml:space="preserve"><tspan class="fett">PUT</tspan> …/registers/40001  {"value": 5.0}</text>
-  <text x="556" y="814" font-size="36">auf <tspan class="mono dunkel">READY</tspan> warten, dann messen</text>
+  <!-- Technisch = Python-Library: die Schleife über die Messpunkte lebt hier -->
+  <rect x="90" y="570" width="380" height="280" rx="18" fill="#005076"/>
+  <rect x="490" y="570" width="895" height="280" rx="18" fill="#005076" fill-opacity="0.12"/>
+  <text x="120" y="665" font-size="46" class="fett weiss">Technisch</text>
+  <text x="120" y="715" font-size="46" class="fett weiss">= Python</text>
+  <text x="120" y="770" font-size="36" class="weiss">liest: Entwicklung</text>
+  <text x="520" y="640" font-size="36" class="mono fett dunkel">Run Measurement Group</text>
+  <text x="520" y="694" font-size="36" class="fett gruen">für jeden Messpunkt:</text>
+  <rect x="524" y="712" width="8" height="90" rx="4" fill="#00946C"/>
+  <text x="556" y="744" font-size="36" class="mono dunkel" xml:space="preserve"><tspan class="fett">PUT</tspan> …/registers/40001  {"value": 5.0}</text>
+  <text x="556" y="792" font-size="36">auf <tspan class="mono dunkel">READY</tspan> warten, dann messen</text>
 
   <!-- Aufrufe von oben nach unten -->
-  <path d="M280,234 V250" class="pfeil"/>
-  <path d="M280,410 V426" class="pfeil"/>
-  <path d="M280,586 V602" class="pfeil"/>
+  <path d="M280,294 V314" class="pfeil"/>
+  <path d="M280,534 V554" class="pfeil"/>
 
   <!-- Die vier Regeln -->
   <rect x="1410" y="90" width="450" height="760" rx="20" fill="#B3DFD3"/>

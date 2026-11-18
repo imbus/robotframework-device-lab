@@ -9,7 +9,7 @@
 
   <rect width="1920" height="900" fill="#FFFFFF"/>
 
-  <!-- Ausschnitt aus testdata/devices/variante_a.json, farbig nach Testdatenart -->
+  <!-- Ausschnitt aus data/devices/variante_a.json, farbig nach Testdatenart -->
   <rect x="60" y="40" width="1180" height="820" rx="18" fill="#FFFFFF" stroke="#4C6369" stroke-opacity="0.35" stroke-width="3"/>
   <!-- Umgebung -->
   <rect x="80" y="164" width="1140" height="98" fill="#4086C2" fill-opacity="0.16"/>
