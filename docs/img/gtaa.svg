@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="900" viewBox="0 0 1920 900">
+  <title>gTAA: vier Schichten trennen Testfall und Technik</title>
+  <style>
+    text { font-family: Calibri, Carlito, Arial, sans-serif; fill: #5F5F5F; }
+    .mono { font-family: Consolas, Menlo, monospace; }
+    .fett { font-weight: bold; }
+    .weiss { fill: #FFFFFF; }
+    .dunkel { fill: #005076; }
+    .chip { fill: #FFFFFF; stroke-width: 3; }
+  </style>
+
+  <rect width="1920" height="900" fill="#FFFFFF"/>
+
+  <!-- Schicht 1: Testdefinition -->
+  <rect x="60" y="30" width="500" height="195" rx="18" fill="#00946C"/>
+  <rect x="590" y="30" width="1270" height="195" rx="18" fill="#00946C" fill-opacity="0.12"/>
+  <text x="100" y="119" font-size="48" class="fett weiss">Testdefinition</text>
+  <text x="100" y="169" font-size="36" class="weiss">Was wird geprüft?</text>
+  <rect x="620" y="52" width="233" height="150" rx="14" class="chip" stroke="#00946C"/>
+  <rect x="883" y="52" width="289" height="150" rx="14" class="chip" stroke="#00946C"/>
+  <rect x="1202" y="52" width="352" height="150" rx="14" class="chip" stroke="#00946C"/>
+  <g text-anchor="middle">
+    <text x="737" y="114" font-size="38" class="mono fett dunkel">tests/</text>
+    <text x="737" y="164" font-size="36">Testfälle</text>
+    <text x="1028" y="114" font-size="38" class="mono fett dunkel">resources/</text>
+    <text x="1028" y="164" font-size="36">Keywords</text>
+    <text x="1378" y="114" font-size="38" class="mono fett dunkel">testdata/</text>
+    <text x="1378" y="164" font-size="36">JSON je Variante</text>
+  </g>
+
+  <!-- Schicht 2: Testausführung -->
+  <rect x="60" y="245" width="500" height="195" rx="18" fill="#4086C2"/>
+  <rect x="590" y="245" width="1270" height="195" rx="18" fill="#4086C2" fill-opacity="0.12"/>
+  <text x="100" y="334" font-size="48" class="fett weiss">Testausführung</text>
+  <text x="100" y="384" font-size="36" class="weiss">Wie läuft es ab?</text>
+  <rect x="620" y="267" width="365" height="150" rx="14" class="chip" stroke="#4086C2"/>
+  <rect x="1015" y="267" width="289" height="150" rx="14" class="chip" stroke="#4086C2"/>
+  <rect x="1334" y="267" width="346" height="150" rx="14" class="chip" stroke="#4086C2"/>
+  <g text-anchor="middle">
+    <text x="803" y="329" font-size="38" class="fett dunkel">Robot Framework</text>
+    <text x="803" y="379" font-size="36">führt aus</text>
+    <text x="1160" y="329" font-size="38" class="mono fett dunkel">robot.toml</text>
+    <text x="1160" y="379" font-size="36">Profile je Gerät</text>
+    <text x="1507" y="329" font-size="38" class="fett dunkel">lokal, Jenkins</text>
+    <text x="1507" y="379" font-size="36">gleicher Befehl</text>
+  </g>
+
+  <!-- Schicht 3: Testadaptierung -->
+  <rect x="60" y="460" width="500" height="195" rx="18" fill="#005076"/>
+  <rect x="590" y="460" width="1270" height="195" rx="18" fill="#005076" fill-opacity="0.12"/>
+  <text x="100" y="549" font-size="48" class="fett weiss">Testadaptierung</text>
+  <text x="100" y="599" font-size="36" class="weiss">Brücke zum Gerät</text>
+  <rect x="620" y="482" width="414" height="150" rx="14" class="chip" stroke="#005076"/>
+  <rect x="1064" y="482" width="365" height="150" rx="14" class="chip" stroke="#005076"/>
+  <g text-anchor="middle">
+    <text x="827" y="544" font-size="38" class="mono fett dunkel">DeviceHubLibrary</text>
+    <text x="827" y="594" font-size="36">Python, spricht REST</text>
+    <text x="1246" y="544" font-size="38" class="fett dunkel">Browser Library</text>
+    <text x="1246" y="594" font-size="36">bedient Web-UI</text>
+  </g>
+
+  <!-- Schicht 4: System unter Test -->
+  <rect x="60" y="675" width="500" height="195" rx="18" fill="#4C6369"/>
+  <rect x="590" y="675" width="1270" height="195" rx="18" fill="#4C6369" fill-opacity="0.12"/>
+  <text x="100" y="764" font-size="48" class="fett weiss">System unter Test</text>
+  <text x="100" y="814" font-size="36" class="weiss">das simulierte Gerät</text>
+  <rect x="620" y="697" width="289" height="150" rx="14" class="chip" stroke="#4C6369"/>
+  <rect x="939" y="697" width="386" height="150" rx="14" class="chip" stroke="#4C6369"/>
+  <rect x="1355" y="697" width="267" height="150" rx="14" class="chip" stroke="#4C6369"/>
+  <g text-anchor="middle">
+    <text x="764" y="759" font-size="38" class="mono fett dunkel">devicehub/</text>
+    <text x="764" y="809" font-size="36">Mock: MM-100</text>
+    <text x="1132" y="759" font-size="38" class="fett dunkel">REST-API</text>
+    <text x="1132" y="809" font-size="36">Register, Zustände</text>
+    <text x="1488" y="759" font-size="38" class="fett dunkel">Web-UI</text>
+    <text x="1488" y="809" font-size="36">Statusseite</text>
+  </g>
+</svg>

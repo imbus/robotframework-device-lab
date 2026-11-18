@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="900" viewBox="0 0 1920 900">
+  <title>Schichten: von fachlich zu technisch</title>
+  <defs>
+    <marker id="spitze" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4C6369"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Calibri, Carlito, Arial, sans-serif; fill: #5F5F5F; }
+    .mono { font-family: Consolas, Menlo, monospace; }
+    .fett { font-weight: bold; }
+    .weiss { fill: #FFFFFF; }
+    .dunkel { fill: #005076; }
+    .gruen { fill: #00946C; }
+    .schiefer, .schiefer text { fill: #4C6369; }
+    .pfeil { fill: none; stroke: #4C6369; stroke-width: 6; marker-end: url(#spitze); }
+  </style>
+
+  <rect width="1920" height="900" fill="#FFFFFF"/>
+
+  <!-- Achse: oben fachlich, unten technisch -->
+  <g font-size="36" class="fett schiefer">
+    <text transform="translate(60,90) rotate(-90)" text-anchor="end">fachlich</text>
+    <text transform="translate(60,850) rotate(-90)">technisch</text>
+  </g>
+  <path d="M48,224 V682" class="pfeil"/>
+
+  <!-- Ein Beispielschritt, durch alle Schichten verfolgt -->
+  <text x="520" y="64" font-size="40"><tspan class="fett gruen">Beispiel:</tspan> <tspan class="fett dunkel">Messwerte erhalten</tspan></text>
+
+  <!-- Workflow -->
+  <rect x="90" y="90" width="380" height="140" rx="18" fill="#00946C"/>
+  <rect x="490" y="90" width="895" height="140" rx="18" fill="#00946C" fill-opacity="0.12"/>
+  <text x="120" y="152" font-size="46" class="fett weiss">Workflow</text>
+  <text x="120" y="200" font-size="36" class="weiss">liest: Fachbereich</text>
+  <text x="520" y="172" font-size="36" class="mono fett dunkel">Messung durchführen</text>
+
+  <!-- Fachlich -->
+  <rect x="90" y="266" width="380" height="140" rx="18" fill="#4086C2"/>
+  <rect x="490" y="266" width="895" height="140" rx="18" fill="#4086C2" fill-opacity="0.12"/>
+  <text x="120" y="328" font-size="46" class="fett weiss">Fachlich</text>
+  <text x="120" y="376" font-size="36" class="weiss">liest: Testdesign</text>
+  <text x="520" y="348" font-size="36" class="mono fett dunkel">Messwerte erhalten</text>
+
+  <!-- Technisch -->
+  <rect x="90" y="442" width="380" height="140" rx="18" fill="#005076"/>
+  <rect x="490" y="442" width="895" height="140" rx="18" fill="#005076" fill-opacity="0.12"/>
+  <text x="120" y="504" font-size="46" class="fett weiss">Technisch</text>
+  <text x="120" y="552" font-size="36" class="weiss">liest: Automatisierung</text>
+  <text x="520" y="524" font-size="36" class="mono fett dunkel">Messgruppe ausführen</text>
+
+  <!-- Library (Python): die Schleife über die Messpunkte lebt hier -->
+  <rect x="90" y="618" width="380" height="232" rx="18" fill="#4C6369"/>
+  <rect x="490" y="618" width="895" height="232" rx="18" fill="#4C6369" fill-opacity="0.12"/>
+  <text x="120" y="718" font-size="46" class="fett weiss">Library / Python</text>
+  <text x="120" y="768" font-size="36" class="weiss">liest: Entwicklung</text>
+  <text x="520" y="674" font-size="36" class="mono fett dunkel">Run Measurement Group</text>
+  <text x="520" y="722" font-size="36" class="fett gruen">für jeden Messpunkt:</text>
+  <rect x="524" y="738" width="8" height="86" rx="4" fill="#00946C"/>
+  <text x="556" y="768" font-size="36" class="mono dunkel" xml:space="preserve"><tspan class="fett">PUT</tspan> …/registers/40001  {"value": 5.0}</text>
+  <text x="556" y="814" font-size="36">auf <tspan class="mono dunkel">READY</tspan> warten, dann messen</text>
+
+  <!-- Aufrufe von oben nach unten -->
+  <path d="M280,234 V250" class="pfeil"/>
+  <path d="M280,410 V426" class="pfeil"/>
+  <path d="M280,586 V602" class="pfeil"/>
+
+  <!-- Die vier Regeln -->
+  <rect x="1410" y="90" width="450" height="760" rx="20" fill="#B3DFD3"/>
+  <text x="1445" y="158" font-size="48" class="fett dunkel">Vier Regeln</text>
+  <g fill="#00946C">
+    <circle cx="1462" cy="240" r="28"/>
+    <circle cx="1462" cy="398" r="28"/>
+    <circle cx="1462" cy="556" r="28"/>
+    <circle cx="1462" cy="714" r="28"/>
+  </g>
+  <g text-anchor="middle" font-size="38">
+    <text x="1462" y="253" class="fett weiss">1</text>
+    <text x="1462" y="411" class="fett weiss">2</text>
+    <text x="1462" y="569" class="fett weiss">3</text>
+    <text x="1462" y="727" class="fett weiss">4</text>
+  </g>
+  <g font-size="36">
+    <text x="1510" y="252">Tests sprechen</text>
+    <text x="1510" y="296">nur Fachsprache</text>
+    <text x="1510" y="410">Jede Schicht ruft</text>
+    <text x="1510" y="454">nur die nächste</text>
+    <text x="1510" y="568">Logik gehört in</text>
+    <text x="1510" y="612">Code-Bibliotheken</text>
+    <text x="1510" y="726">Auf Zustände warten,</text>
+    <text x="1510" y="770">nicht auf Zeit</text>
+  </g>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="900" viewBox="0 0 1920 900">
+  <title>Landschaft: Alle Wege führen über Robot Framework</title>
+  <defs>
+    <marker id="spitze" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4C6369"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Calibri, Carlito, Arial, sans-serif; fill: #5F5F5F; }
+    .mono { font-family: Consolas, Menlo, monospace; }
+    .fett { font-weight: bold; }
+    .weiss { fill: #FFFFFF; }
+    .dunkel { fill: #005076; }
+    .schiefer { fill: #4C6369; }
+    .pfeil { fill: none; stroke: #4C6369; stroke-width: 6; marker-end: url(#spitze); }
+  </style>
+
+  <rect width="1920" height="900" fill="#FFFFFF"/>
+
+  <!-- Oben: Ergebnis und Jenkins -->
+  <rect x="520" y="40" width="460" height="180" rx="18" fill="#FFFFFF" stroke="#00946C" stroke-width="5"/>
+  <rect x="1120" y="40" width="380" height="180" rx="18" fill="#4C6369"/>
+  <g text-anchor="middle">
+    <text x="750" y="118" font-size="48" class="fett dunkel">Log und Report</text>
+    <text x="750" y="172" font-size="36" class="mono">results/log.html</text>
+    <text x="1310" y="118" font-size="48" class="fett weiss">Jenkins</text>
+    <text x="1310" y="172" font-size="36" class="weiss">Profil ci, ohne UI</text>
+  </g>
+
+  <!-- Mitte: Testdaten → Robot Framework → DeviceHub → Messgerät -->
+  <rect x="60" y="340" width="340" height="220" rx="18" fill="#B3DFD3"/>
+  <rect x="520" y="330" width="460" height="240" rx="18" fill="#00946C"/>
+  <rect x="1120" y="340" width="380" height="220" rx="18" fill="#005076"/>
+  <rect x="1600" y="340" width="260" height="220" rx="18" fill="#4086C2"/>
+  <g text-anchor="middle">
+    <text x="230" y="438" font-size="48" class="fett dunkel">Testdaten</text>
+    <text x="230" y="492" font-size="36" class="dunkel">JSON je Variante</text>
+    <text x="750" y="438" font-size="48" class="fett weiss">Robot Framework</text>
+    <text x="750" y="494" font-size="38" class="weiss">liest, steuert, prüft</text>
+    <text x="1310" y="438" font-size="48" class="fett weiss">DeviceHub</text>
+    <text x="1310" y="492" font-size="36" class="weiss">REST-Werkzeug</text>
+    <text x="1730" y="438" font-size="44" class="fett weiss">Messgerät</text>
+    <text x="1730" y="492" font-size="36" class="weiss">MM-100 A/B</text>
+    <text x="1730" y="534" font-size="36" class="weiss">(simuliert)</text>
+  </g>
+
+  <!-- Unten: Browser für die Web-UI -->
+  <rect x="820" y="690" width="360" height="170" rx="18" fill="#4C6369"/>
+  <g text-anchor="middle">
+    <text x="1000" y="763" font-size="48" class="fett weiss">Browser</text>
+    <text x="1000" y="815" font-size="36" class="weiss">Browser Library</text>
+  </g>
+
+  <!-- Pfeile und Beschriftungen -->
+  <path d="M408,450 H504" class="pfeil"/>
+  <path d="M988,450 H1104" class="pfeil"/>
+  <path d="M1508,450 H1584" class="pfeil"/>
+  <path d="M750,322 V236" class="pfeil"/>
+  <path d="M988,130 H1104" class="pfeil"/>
+  <path d="M750,578 V775 H804" class="pfeil"/>
+  <path d="M1188,775 H1310 V576" class="pfeil"/>
+  <text x="1050" y="428" font-size="40" text-anchor="middle" class="fett schiefer">REST</text>
+  <text x="1330" y="690" font-size="38" class="fett schiefer">Web-UI</text>
+</svg>

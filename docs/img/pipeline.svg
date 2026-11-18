@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="900" viewBox="0 0 1920 900">
+  <title>Pipeline: CI-Best-Practices</title>
+  <defs>
+    <marker id="spitze" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4C6369"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Calibri, Carlito, Arial, sans-serif; fill: #5F5F5F; }
+    .mono { font-family: Consolas, Menlo, monospace; }
+    .fett { font-weight: bold; }
+    .weiss { fill: #FFFFFF; }
+    .dunkel { fill: #005076; }
+    .karte { fill: #FFFFFF; stroke: #005076; stroke-width: 4; }
+    .offen { fill: #FFFFFF; stroke: #005076; stroke-width: 4; stroke-dasharray: 14 10; }
+    .linie { fill: none; stroke: #4C6369; stroke-width: 6; }
+    .pfeil { fill: none; stroke: #4C6369; stroke-width: 6; marker-end: url(#spitze); }
+  </style>
+
+  <rect width="1920" height="900" fill="#FFFFFF"/>
+
+  <!-- Vier Stufen: je früher, desto schneller die Rückmeldung -->
+  <rect x="60" y="40" width="400" height="290" rx="18" fill="#4C6369"/>
+  <rect x="526" y="40" width="400" height="290" rx="18" fill="#4086C2"/>
+  <rect x="992" y="40" width="400" height="290" rx="18" fill="#00946C"/>
+  <rect x="1458" y="40" width="400" height="290" rx="18" fill="#005076"/>
+  <g text-anchor="middle">
+    <g font-size="46" class="fett">
+      <text x="260" y="122" class="weiss">Lokal</text>
+      <text x="726" y="122" class="weiss">Feature-Branch</text>
+      <text x="1192" y="122" class="weiss">Merge Request</text>
+      <text x="1658" y="122" class="weiss">Nachts auf main</text>
+    </g>
+    <g font-size="36">
+      <text x="260" y="186" class="weiss">Pre-Commit-Hook</text>
+      <text x="260" y="232" class="weiss">Robocop, Format</text>
+      <text x="260" y="278" class="weiss">Dry-Run</text>
+      <text x="726" y="186" class="weiss">jeder Push:</text>
+      <text x="726" y="232" class="weiss">Lint, pytest</text>
+      <text x="726" y="278" class="weiss">Smoke-Tests</text>
+      <text x="1192" y="186" class="weiss">Review</text>
+      <text x="1192" y="232" class="weiss">grüne Pipeline</text>
+      <text x="1658" y="186" class="weiss">volle Suite</text>
+      <text x="1658" y="232" class="weiss">alle Varianten</text>
+      <text x="1658" y="278" class="weiss">Report und Log</text>
+    </g>
+  </g>
+  <path d="M466,185 H506" class="pfeil"/>
+  <path d="M932,185 H972" class="pfeil"/>
+  <path d="M1398,185 H1438" class="pfeil"/>
+
+  <!-- Ein Befehl, das Profil aus robot.toml wählt das Gerät -->
+  <rect x="60" y="390" width="1800" height="470" rx="20" fill="#4C6369" fill-opacity="0.08"/>
+  <text x="960" y="456" font-size="40" text-anchor="middle" class="fett dunkel">Ein Befehl – das Profil wählt das Gerät</text>
+  <text x="960" y="522" font-size="40" text-anchor="middle" class="mono fett dunkel">robotcode --profile &lt;profil&gt; robot</text>
+  <path d="M960,546 V580 M330,580 H1710" class="linie"/>
+  <path d="M330,580 V606" class="pfeil"/>
+  <path d="M830,580 V606" class="pfeil"/>
+  <path d="M1330,580 V606" class="pfeil"/>
+  <path d="M1710,580 V606" class="pfeil"/>
+  <rect x="110" y="622" width="440" height="190" rx="18" class="karte"/>
+  <rect x="610" y="622" width="440" height="190" rx="18" class="karte"/>
+  <rect x="1110" y="622" width="440" height="190" rx="18" class="karte"/>
+  <rect x="1610" y="622" width="200" height="190" rx="18" class="offen"/>
+  <g text-anchor="middle">
+    <text x="330" y="702" font-size="44" class="mono fett dunkel">variante-a</text>
+    <text x="330" y="764" font-size="36">Messmodul A</text>
+    <text x="830" y="702" font-size="44" class="mono fett dunkel">variante-b</text>
+    <text x="830" y="764" font-size="36">Messmodul B</text>
+    <text x="1330" y="702" font-size="44" class="mono fett dunkel">ci</text>
+    <text x="1330" y="764" font-size="36">für Jenkins</text>
+    <text x="1710" y="702" font-size="64" class="fett dunkel">…</text>
+    <text x="1710" y="764" font-size="36">weitere</text>
+  </g>
+</svg>

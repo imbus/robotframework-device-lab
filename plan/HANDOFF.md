@@ -13,33 +13,40 @@ Jede Session ergänzt hier einen Abschnitt.
 ### S4 – Diagramme und Folien (18.11.2026)
 
 - **Gebaut:**
-  - Folien außerhalb des Repos in `workshop-material/folien/`: `rf-workshop.pptx` (26 Folien + 2 Joker)
+  - Folien außerhalb des Repos in `workshop-material/folien/`: `rf-workshop.pptx` (28 Folien + 1 Joker)
     und `rf-workshop.pdf` als Vorschau, erzeugt von `erzeuge_folien.py` aus der Vorlage
-    (alle Vorlagenfolien entfernt, nur Layouts der Vorlage).
+    (alle Vorlagenfolien entfernt, nur Layouts der Vorlage, Metadaten der Vorlage neutralisiert).
   - Live-Demo-Folien im Layout `1_Zitat green imbus`: Play-Symbol, „Live in VS Code“, ein Satz,
     Block im Reiter. Jede Folie hat eine Sprechernotiz (2–4 Sätze + „Übergang: …“).
-  - Das Skript prüft bei jedem Lauf: Fließtext ≤ 25 Wörter, Titel ≤ 8 Wörter, Notiz mit Übergang,
-    nur Layouts, Schriften und Farben der Vorlage. Fehlende Bilder → grauer Platzhalter mit Dateiname.
-  - Diagramme: nicht in dieser Session gebaut, sondern parallel in der S1-Session (`docs/img/`,
-    8 × SVG + PNG, 1920 × 900). Die Folien binden `docs/img/*.png` ein.
+  - Das Skript prüft bei jedem Lauf: Fließtext ≤ 25 Wörter (ohne Überschriften, Reiter und Code),
+    Titel ≤ 8 Wörter und ≤ 50 Zeichen, Notiz mit Übergang, nur Layouts, Schriften und Farben der Vorlage
+    (plus Consolas für Code). Fehlende Bilder → grauer Platzhalter mit Dateiname.
+  - Diagramme in `docs/img/` (8 × SVG + PNG, 1920 × 900): ursprünglich aus der S1-Session; nach dem
+    Folien-Feedback in S4 neu gezeichnet: `schichten` (ein Schritt von fachlich bis technisch,
+    allgemeine Regeln), `fehlerkategorien` (Log-Baum: wo es scheitert, verrät die Ursache),
+    `pipeline` (CI-Best-Practices), in `gtaa` „Profile je Gerät“ statt „3 Profile“.
+  - Klassische gTAA-Abbildung (ISTQB) aus dem Basis-Foliensatz in `workshop-material/folien/bilder/`.
 - **Starten mit:** in `workshop-material/folien/`:
   `uv run --no-project --with python-pptx python erzeuge_folien.py --pdf`
-  (PDF über PowerPoint per AppleScript; ohne `--pdf` nur PPTX + Prüfung).
+  (PDF über PowerPoint per AppleScript aus einer Kopie, damit eine offene Fassung nicht stört).
 - **Abweichungen vom Auftrag:**
-  - Kein Kapiteltrenner pro Block (ergäbe ca. 35 Folien): Der Blockname steht als Unterzeile unter
-    jedem Titel, nur der Nachmittag beginnt mit einem Kapiteltrenner (Entscheidung des Nutzers).
+  - Kein Kapiteltrenner pro Block: Der Blockname steht als Unterzeile unter jedem Titel, nur der
+    Nachmittag beginnt mit einem Kapiteltrenner (Entscheidung des Nutzers).
+  - 28 + 1 statt ca. 25 + 2 Folien: Nach dem Feedback des Nutzers kamen „Was RF ist und was nicht“,
+    die klassische gTAA und eine Anti-Pattern-Übersicht dazu; das Orchester steckt nur noch in Titel
+    und Notiz der Landschaftsfolie; die beiden KI-Joker sind zu einem zusammengelegt.
   - Gestrichen: „QF-Test → Robot Framework“ (reine Textfolie, steht auf dem Spickzettel).
-    Titelfolie ohne Orchester-Bild (Vorlagenhintergrund), das Orchester steht auf Folie 3 und 13.
-  - Zusätzlich genutzte Vorlagen-Layouts: `1_Titel und Inhalt` (Diagramm mit Titel) und
-    `1_4 Kacheln/Blöcke` (Spielregeln). `1_Bild` nicht genutzt, weil es keinen Titel hat.
-  - Titel aus `folienplan.csv` teils zu Aussagen umformuliert (z. B. „Jede Testdatei hat feste Abschnitte“).
-  - Diagramme setzen Code-Bezeichner in Consolas/Menlo, alles andere in Calibri (gewollt: Code in Monospace).
+  - Code auf Folien und in Diagrammen in Consolas (Entscheidung des Nutzers), sonst Calibri.
+  - Zusätzlich genutzte Vorlagen-Layouts: `1_Titel und Inhalt`, `1_4 Kacheln/Blöcke`,
+    `1_6 Kacheln/Blöcke`. `1_Bild` nicht genutzt, weil es keinen Titel hat.
 - **Offen / Hinweise für die nächste Session:**
   - Screenshots fehlen noch: `folien/screenshots/` mit `anatomie_testdatei.png`, `report.png`,
     `log_messwerte.png`, `log_vorher.png`, `log_nachher.png` füllen, dann das Skript erneut starten.
-  - Nach S2/S3 abgleichen: Beispielcode auf Folie 18 mit `antipatterns/messung_antipattern.robot`,
-    Befehle auf Folie 8 und in den Live-Notizen (`just lint`, Quiz-Profile `quiz-1` bis `quiz-3`).
-  - Fachlich prüfen: Pilotkarten S/M/L (Folie 25) und KI-Joker (Folien 27–28).
+  - Nach S2/S3 abgleichen: Code auf Folie 20 mit `antipatterns/messung_antipattern.robot`; Beispiele
+    auf Folie 6, 11 und 13 mit den echten Keywords (Kette nach Option A: Messung durchführen →
+    Messwerte erhalten → Messgruppe ausführen → Run Measurement Group);
+    Live-Notizen (`just lint`, Quiz-Profile). Folie 18 (Variante C) braucht ein drittes Gerät im Mock.
+  - Fachlich prüfen: Pilotkarten S/M/L (Folie 27) und KI-Joker (Folie 29).
   - Klassifizierung (ISK) auf der Titelfolie ist bewusst leer.
   - Ändern sich Diagramme in `docs/img/`, die Folien einfach neu erzeugen.
 

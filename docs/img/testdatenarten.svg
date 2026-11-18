@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="900" viewBox="0 0 1920 900">
+  <title>Testdatenarten: Neue Variante? Neue JSON-Datei, gleicher Test</title>
+  <style>
+    text { font-family: Calibri, Carlito, Arial, sans-serif; fill: #5F5F5F; }
+    .mono { font-family: Consolas, Menlo, monospace; }
+    .fett { font-weight: bold; }
+    .dunkel { fill: #005076; }
+  </style>
+
+  <rect width="1920" height="900" fill="#FFFFFF"/>
+
+  <!-- Ausschnitt aus testdata/devices/variante_a.json, farbig nach Testdatenart -->
+  <rect x="60" y="40" width="1180" height="820" rx="18" fill="#FFFFFF" stroke="#4C6369" stroke-opacity="0.35" stroke-width="3"/>
+  <!-- Umgebung -->
+  <rect x="80" y="164" width="1140" height="98" fill="#4086C2" fill-opacity="0.16"/>
+  <rect x="80" y="164" width="10" height="98" fill="#4086C2"/>
+  <!-- Steuerung -->
+  <rect x="80" y="264" width="1140" height="98" fill="#4C6369" fill-opacity="0.16"/>
+  <rect x="80" y="264" width="10" height="98" fill="#4C6369"/>
+  <!-- Eingabe -->
+  <rect x="80" y="464" width="1140" height="48" fill="#00946C" fill-opacity="0.16"/>
+  <rect x="80" y="464" width="10" height="48" fill="#00946C"/>
+  <!-- Soll -->
+  <rect x="80" y="514" width="1140" height="148" fill="#F69F00" fill-opacity="0.18"/>
+  <rect x="80" y="514" width="10" height="148" fill="#F69F00"/>
+
+  <g font-size="36" xml:space="preserve">
+    <text class="mono" x="110" y="100">{</text>
+    <text class="mono" x="110" y="150">  "device": { "model": "MM-100", "variant": "A" },</text>
+    <text class="mono" x="110" y="200">  "environment": { "registers": {</text>
+    <text class="mono" x="110" y="250">      "setpoint_voltage": 40001, … } },</text>
+    <text class="mono" x="110" y="300">  "control": { "settle_timeout_s": 15,</text>
+    <text class="mono" x="110" y="350">               "repetitions": 3 },</text>
+    <text class="mono" x="110" y="400">  "measurement_points": [</text>
+    <text class="mono" x="110" y="450">    { "name": "MP1",</text>
+    <text class="mono" x="110" y="500">      "input": { "voltage_v": 5.0 },</text>
+    <text class="mono" x="110" y="550">      "expected": { "voltage_v": 5.0,</text>
+    <text class="mono" x="110" y="600">                    "tolerance_v": 0.05,</text>
+    <text class="mono" x="110" y="650">                    "max_temperature_c": 60 } },</text>
+    <text class="mono" x="110" y="700">    …</text>
+    <text class="mono" x="110" y="750">  ]</text>
+    <text class="mono" x="110" y="800">}</text>
+  </g>
+
+  <!-- Legende: vier Testdatenarten -->
+  <rect x="1290" y="50" width="14" height="150" fill="#4086C2"/>
+  <rect x="1290" y="255" width="14" height="150" fill="#4C6369"/>
+  <rect x="1290" y="460" width="14" height="150" fill="#00946C"/>
+  <rect x="1290" y="665" width="14" height="150" fill="#F69F00"/>
+  <g font-size="36">
+    <text x="1325" y="94" font-size="46" class="fett dunkel">Umgebung</text>
+    <text x="1325" y="142">Register je Variante:</text>
+    <text x="1325" y="186">A: 40001 · B: 41001</text>
+
+    <text x="1325" y="299" font-size="46" class="fett dunkel">Steuerung</text>
+    <text x="1325" y="347">Timeout 15 s,</text>
+    <text x="1325" y="391">3 Messungen je Punkt</text>
+
+    <text x="1325" y="504" font-size="46" class="fett dunkel">Eingabe</text>
+    <text x="1325" y="552">was eingestellt wird:</text>
+    <text x="1325" y="596">5,0 V an MP1</text>
+
+    <text x="1325" y="709" font-size="46" class="fett dunkel">Soll</text>
+    <text x="1325" y="757">erwartet 5,0 V ± 0,05 V,</text>
+    <text x="1325" y="801">höchstens 60 °C</text>
+  </g>
+</svg>

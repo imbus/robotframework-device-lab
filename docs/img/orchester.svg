@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="900" viewBox="0 0 1920 900">
+  <title>Orchester: Robot Framework dirigiert, die Werkzeuge spielen</title>
+  <defs>
+    <marker id="spitze" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4C6369"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Calibri, Carlito, Arial, sans-serif; fill: #5F5F5F; }
+    .mono { font-family: Consolas, Menlo, monospace; }
+    .fett { font-weight: bold; }
+    .weiss { fill: #FFFFFF; }
+    .dunkel { fill: #005076; }
+    .schiefer { fill: #4C6369; }
+    .pfeil { fill: none; stroke: #4C6369; stroke-width: 6; marker-end: url(#spitze); }
+  </style>
+
+  <rect width="1920" height="900" fill="#FFFFFF"/>
+
+  <!-- Notenblatt = Testdaten -->
+  <rect x="60" y="300" width="440" height="240" rx="18" fill="#B3DFD3"/>
+  <g text-anchor="middle">
+    <text x="280" y="380" font-size="56" class="fett dunkel">Notenblatt</text>
+    <text x="280" y="434" font-size="38" class="dunkel">Testdaten (JSON)</text>
+    <text x="280" y="484" font-size="36" class="mono dunkel">variante_a.json</text>
+  </g>
+
+  <!-- Dirigent = Robot Framework -->
+  <rect x="620" y="280" width="500" height="280" rx="18" fill="#00946C"/>
+  <g text-anchor="middle">
+    <text x="870" y="374" font-size="64" class="fett weiss">Dirigent</text>
+    <text x="870" y="436" font-size="44" class="weiss">Robot Framework</text>
+    <text x="870" y="490" font-size="38" class="weiss">liest, steuert, prüft</text>
+  </g>
+
+  <!-- Musiker = DeviceHub, Messgerät, Browser -->
+  <text x="1575" y="80" font-size="44" text-anchor="middle" class="fett schiefer">Musiker</text>
+  <rect x="1290" y="105" width="570" height="190" rx="18" fill="#005076"/>
+  <rect x="1290" y="325" width="570" height="190" rx="18" fill="#4086C2"/>
+  <rect x="1290" y="545" width="570" height="190" rx="18" fill="#4C6369"/>
+  <g text-anchor="middle">
+    <text x="1575" y="188" font-size="50" class="fett weiss">DeviceHub</text>
+    <text x="1575" y="240" font-size="38" class="weiss">REST-Werkzeug</text>
+    <text x="1575" y="408" font-size="50" class="fett weiss">Messgerät</text>
+    <text x="1575" y="460" font-size="38" class="weiss">MM-100, Varianten A und B</text>
+    <text x="1575" y="628" font-size="50" class="fett weiss">Browser</text>
+    <text x="1575" y="680" font-size="38" class="weiss">Statusseite im Web-UI</text>
+  </g>
+
+  <!-- Aufnahme = Log und Report -->
+  <rect x="620" y="650" width="500" height="210" rx="18" fill="#FFFFFF" stroke="#00946C" stroke-width="5"/>
+  <g text-anchor="middle">
+    <text x="870" y="741" font-size="56" class="fett dunkel">Aufnahme</text>
+    <text x="870" y="797" font-size="38">Log und Report</text>
+  </g>
+
+  <!-- Pfeile -->
+  <path d="M508,420 H604" class="pfeil"/>
+  <path d="M1128,420 L1274,200" class="pfeil"/>
+  <path d="M1128,420 H1274" class="pfeil"/>
+  <path d="M1128,420 L1274,640" class="pfeil"/>
+  <path d="M870,568 V634" class="pfeil"/>
+</svg>
