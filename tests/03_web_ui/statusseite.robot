@@ -1,17 +1,20 @@
 *** Settings ***
-Documentation       Web-UI: Das Gerät lässt sich über seine Statusseite in Betrieb nehmen.
-...                 Einmalig vorher: uv run rfbrowser init
+Documentation    Web-UI: Das Gerät lässt sich über seine Statusseite in Betrieb nehmen.
+...              Einmalig vorher: uv run rfbrowser init
 
-Resource            src/resources/fachlich/geraet.resource
-Resource            src/resources/workflow/statusseite.resource
+Resource         src/resources/fachlich/geraet.resource
+Resource         src/resources/workflow/statusseite.resource
 
-Suite Setup         Prüfstand vorbereiten
-Test Teardown       Gerät in sicheren Zustand bringen
+Suite Setup      Prüfstand vorbereiten
+Test Teardown    Gerät in sicheren Zustand bringen
 
-Test Tags           ui
+Test Tags        ui
 
 
 *** Test Cases ***
 Statusseite schaltet Gerät ein
     [Documentation]    Nach „Ein“ auf der Statusseite zeigt das Gerät an, dass es messbereit ist.
+    [Metadata]    Firmware    ${GERAET}[firmware_version]
+    [Metadata]    Seriennummer    ${GERAET}[serial_number]
+    [Metadata]    Variante    ${GERAET}[model] ${GERAET}[variant]
     Gerät über Statusseite in Betrieb nehmen

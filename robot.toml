@@ -24,13 +24,16 @@ description = "Messmodul MM-100, Variante B"
 extend-variables = { GERAETEPROFIL = "data/devices/variante_b.json" }
 
 [profiles.ci]
-description = "Jenkins: ohne Web-UI-Tests, ohne Farben"
-extend-excludes = ["ui"]
+description = "Jenkins: Mock im Container devicehub, Browser unsichtbar, ohne Farben"
 console-colors = "off"
+
+[profiles.ci.extend-variables]
+HEADLESS = "True"
+DEVICEHUB_URL = "http://devicehub:8080"
 
 [profiles.antipattern]
 description = "Absichtlich schlechtes Beispiel (Block 7)"
-paths = ["tests/antipatterns"]
+paths = ["tests/04_antipatterns"]
 excludes = []
 
 # Fehler-Quiz (Block 4): Jedes Profil lässt die Messung aus einem anderen Grund scheitern.

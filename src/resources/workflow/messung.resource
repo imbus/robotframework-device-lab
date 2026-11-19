@@ -1,9 +1,9 @@
 *** Settings ***
-Documentation       Workflow-Schicht: der Messablauf in der Sprache des Fachbereichs.
+Documentation    Workflow-Schicht: der Messablauf in der Sprache des Fachbereichs.
 
-Resource            src/resources/fachlich/messung.resource
+Resource         src/resources/fachlich/messung.resource
 
-Keyword Tags        workflow
+Keyword Tags     workflow
 
 
 *** Keywords ***

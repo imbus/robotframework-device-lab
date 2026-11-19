@@ -4,18 +4,18 @@ Vorhersage: Wo im Log steht, welche Anforderung dieser Test prüft?
 
 
 *** Settings ***
-Documentation       Messung über alle Messpunkte des Geräteprofils.
-...                 Derselbe Test prüft jede Variante; welche, bestimmt das Profil in robot.toml.
+Documentation    Messung über alle Messpunkte des Geräteprofils.
+...              Derselbe Test prüft jede Variante; welche, bestimmt das Profil in robot.toml.
 
-Resource            src/resources/fachlich/geraet.resource
-Resource            src/resources/workflow/messung.resource
+Resource         src/resources/fachlich/geraet.resource
+Resource         src/resources/workflow/messung.resource
 
 # Aus QF-Test bekannt: Vorbereitung → Setup, Aufräumen → Teardown, Prozedur → Keyword
-Suite Setup         Prüfstand vorbereiten
-Test Setup          Gerät hochfahren
-Test Teardown       Gerät in sicheren Zustand bringen
+Suite Setup      Prüfstand vorbereiten
+Test Setup       Gerät hochfahren
+Test Teardown    Gerät in sicheren Zustand bringen
 
-Test Tags           messung
+Test Tags        messung
 
 
 *** Test Cases ***
@@ -23,5 +23,8 @@ Messwerte im Toleranzband
     [Documentation]    Alle Messpunkte liefern Spannungen und Temperaturen innerhalb der Grenzen.
     [Metadata]    Anforderung    REQ-MM100-012
     [Metadata]    Prüfvorschrift    PV-MM100-03 Messgenauigkeit
+    [Metadata]    Firmware    ${GERAET}[firmware_version]
+    [Metadata]    Seriennummer    ${GERAET}[serial_number]
+    [Metadata]    Variante    ${GERAET}[model] ${GERAET}[variant]
     ${messwerte}=    Messung durchführen
     Messergebnis bewerten    ${messwerte}

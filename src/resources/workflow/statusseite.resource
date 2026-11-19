@@ -1,9 +1,9 @@
 *** Settings ***
-Documentation       Workflow-Schicht: Inbetriebnahme über die Web-Oberfläche.
+Documentation    Workflow-Schicht: Inbetriebnahme über die Web-Oberfläche.
 
-Resource            src/resources/fachlich/statusseite.resource
+Resource         src/resources/fachlich/statusseite.resource
 
-Keyword Tags        workflow
+Keyword Tags     workflow
 
 
 *** Keywords ***

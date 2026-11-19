@@ -1,15 +1,15 @@
 *** Settings ***
-Documentation       Fachliche Schicht: das Gerät über seine Statusseite bedienen.
-...                 Die technische Schicht ist die Browser Library; Selektoren nur in dieser Datei.
+Documentation    Fachliche Schicht: das Gerät über seine Statusseite bedienen.
+...              Die technische Schicht ist die Browser Library; Selektoren nur in dieser Datei.
 
-Library             Browser
-Library             DeviceHubLibrary
+Library          Browser
+Library          DeviceHubLibrary
 
-Keyword Tags        fachlich
+Keyword Tags     fachlich
 
 
 *** Variables ***
-${HEADLESS}     ${False}
+${HEADLESS}    ${False}
 
 
 *** Keywords ***

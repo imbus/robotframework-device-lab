@@ -1,10 +1,10 @@
 *** Settings ***
-Documentation       Fachliche Schicht: Messwerte aufnehmen, protokollieren und bewerten.
-...                 Die technische Schicht ist die Python-Library DeviceHubLibrary.
+Documentation    Fachliche Schicht: Messwerte aufnehmen, protokollieren und bewerten.
+...              Die technische Schicht ist die Python-Library DeviceHubLibrary.
 
-Library             DeviceHubLibrary
+Library          DeviceHubLibrary
 
-Keyword Tags        fachlich
+Keyword Tags     fachlich
 
 
 *** Keywords ***

@@ -1,10 +1,15 @@
 *** Settings ***
-Documentation       Fachliche Schicht: Gerät vorbereiten und in einen sicheren Zustand bringen.
-...                 Die technische Schicht ist die Python-Library DeviceHubLibrary.
+Documentation    Fachliche Schicht: Gerät vorbereiten und in einen sicheren Zustand bringen.
+...              Die technische Schicht ist die Python-Library DeviceHubLibrary.
 
-Library             DeviceHubLibrary
+Library          DeviceHubLibrary
 
-Keyword Tags        fachlich
+Keyword Tags     fachlich
+
+
+*** Variables ***
+# Gerätedaten für [Metadata] in den Tests; gefüllt von „Gerätedaten bereitstellen“
+&{GERAET}    &{EMPTY}
 
 
 *** Keywords ***
@@ -12,11 +17,13 @@ Prüfstand vorbereiten
     [Documentation]    Lädt das Geräteprofil, verbindet das Gerät und stellt die Simulation ein.
     Load Device Profile    ${GERAETEPROFIL}
     Connect To DeviceHub    ${DEVICEHUB_URL}
-    ${gerät}=    Get Device Metadata
-    Set Suite Metadata    Firmware    ${gerät}[firmware_version]
-    Set Suite Metadata    Seriennummer    ${gerät}[serial_number]
-    Set Suite Metadata    Variante    ${gerät}[model] ${gerät}[variant]
+    Gerätedaten bereitstellen
     Set Simulated Fault    ${SIMULATIONSFEHLER}
+
+Gerätedaten bereitstellen
+    [Documentation]    Liest Firmware, Seriennummer und Variante und stellt sie als ${GERAET} bereit.
+    ${daten}=    Get Device Metadata
+    VAR    &{GERAET}=    &{daten}    scope=SUITE    # robocop: off=no-suite-variable
 
 Gerät hochfahren
     [Documentation]    Schaltet das Gerät ein und wartet, bis es messbereit ist.
