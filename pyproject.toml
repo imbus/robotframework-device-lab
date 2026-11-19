@@ -11,6 +11,7 @@ dependencies = [
     "robotcode[runner]>=2.8,<3",
     "robotframework>=7.5,<8",
     "robotframework-browser>=21,<22",
+    "robotframework-browser-batteries>=21,<22",
     "robotframework-robocop>=9.4,<10",
     "uvicorn>=0.54,<1",
 ]

@@ -13,6 +13,7 @@ report.html
 output.xml
 browser/
 playwright-log.txt
+docs/keywords/
 
 # Persönliche RobotCode-Einstellungen
 .robot.toml
