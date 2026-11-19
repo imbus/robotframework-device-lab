@@ -75,6 +75,54 @@ Jede Session ergänzt hier einen Abschnitt.
   - Folien/Diagramme (S4): Kette jetzt Test → `Messung durchführen` + `Messergebnis bewerten` → fachlich →
     Python; Folie 18 und Anti-Pattern-Code (`Write Register 40001`, `Sleep 6s/2s`) abgleichen.
 
+### S3 – Robocop, README, Jenkins minimal (19.11.2026)
+
+- **Gebaut:**
+  - `just lint` (`robocop check`, Befunde nur in `tests/04_antipatterns`), `just format`
+    (`robocop format --exclude tests/04_antipatterns`, damit das Anti-Pattern schlecht bleibt).
+  - `just setup` (`uv sync` + `rfbrowser install chromium`), `just docs` (LibDoc über `robotcode libdoc`
+    für Library und alle Resources nach `docs/keywords/`, per `.gitignore` ausgeschlossen).
+  - `README.md`: ein Satz, Voraussetzungen, Start in drei Befehlen, Befehlstabelle, Ordner, vier Regeln.
+  - **Browser Batteries** (`robotframework-browser-batteries`, Wunsch des Nutzers): bringt Node.js mit,
+    Node.js ist keine Voraussetzung mehr (lokal und in Jenkins). Browser kommen mit `rfbrowser install`.
+  - Jenkins: `docker-compose.yml` (Jenkins auf `127.0.0.1:8081` + Mock-Container `devicehub`, Repo als
+    `/repo:ro`), `jenkins/Dockerfile` (Jenkins 2.580.2 LTS + uv; venv aus `uv.lock` unter `/opt/venv` mit
+    Chromium und dessen Systembibliotheken fest im Image; Plugins `workflow-aggregator`, `git`, `robot`),
+    `.dockerignore` (Image bekommt nur `pyproject.toml` und `uv.lock`), `devicehub/Dockerfile`,
+    `Jenkinsfile` (Lint → Unit → Robot, Robot-Plugin im `post` der Robot-Stage),
+    `jenkins/EINRICHTUNG.md` (9 Schritte). Profil `ci`: `DEVICEHUB_URL=http://devicehub:8080`,
+    `HEADLESS=True`, **UI-Test läuft mit** (Wunsch des Nutzers).
+  - Ohne Einrichtungsassistent und Anmeldung (nur lokal gebunden), lokaler Git-Checkout erlaubt,
+    CSP aus, damit `log.html` in Jenkins angezeigt wird (alles über `JAVA_OPTS` in Compose).
+- **Starten mit:** `just jenkins`, dann `jenkins/EINRICHTUNG.md`; stoppen mit `just jenkins-stop`.
+- **Akzeptanzkriterien:**
+  - `just lint`: 9 Befunde, alle in `tests/04_antipatterns` ✔
+  - Frischer Klon (Scratchpad, Arbeitsstand dort committet): `just setup`, `just test` 3/3 grün, `just docs` ✔
+    (`just sim` nicht im Klon gestartet, weil der Mock auf 8080 schon lief)
+  - Jenkins-Lauf grün in 21 s (Lint ohne Befunde, 7 Unit-Tests, 3 Robot-Tests inkl. Web-UI), Robot Results
+    und `log.html` im Job sichtbar ✔ (Job per REST mit den Einstellungen der Anleitung auf einen
+    Scratchpad-Klon mit committetem Arbeitsstand, danach gelöscht)
+  - WLAN aus: gestrichen (Entscheidung des Nutzers, WLAN vor Ort)
+- **Abweichungen vom Auftrag:**
+  - Kein `just offline-prepare` (steht in `LEUCHTTURM.md`). Weil alles im Jenkins-Image liegt, braucht
+    nur `just jenkins` beim ersten Bauen oder nach Änderung von `uv.lock` Internet.
+  - Docker Desktop statt Rancher Desktop (auf dem Vorführ-Laptop installiert); Compose läuft mit beiden.
+  - Smoke-Test und `geraet.resource` hat der Nutzer selbst umgebaut (`Gerätedaten bereitstellen`,
+    `[Metadata]` am Test, `# robocop: off=no-suite-variable`).
+- **Offen / Hinweise für die nächste Session:**
+  - Jenkins baut nur **committete** Stände des eingetragenen Branches (Anleitung: `*/main`);
+    vor der Demo committen. Jenkins liest das lokale `.git`, ein Push ist dafür nicht nötig.
+  - Vor dem Workshop einmal `just jenkins` + Build laufen lassen (Images und uv-Cache warm), danach kein
+    `docker compose down -v` und kein `docker system prune`.
+  - Jenkins-Image: 1,98 GB, erster Bau dauerte bei langsamer Verbindung ca. 40 Minuten (Chromium und
+    Systembibliotheken). Stolperstein: Das Node aus den Batteries braucht `libatomic1`; fehlt es, endet
+    `rfbrowser install` trotzdem mit Exit-Code 0 und der UI-Test scheitert erst in Jenkins mit
+    „Could not connect to the playwright process“ (Ursache in `results/playwright-log.txt`).
+  - `just format` einmal über alle Dateien gelaufen (Settings-Spalte 17 statt 20). In `.vscode/settings.json`
+    ist Robocop für RobotCode aus; formatiert VS Code anders, wechseln sich beide ab.
+  - S4: `just lint` und Jenkins in den Notizen der Folien 23–25 abgleichen.
+  - CLAUDE.md weiterhin nicht an S2 angepasst (siehe S2).
+
 ### S4 – Diagramme und Folien (18.11.2026)
 
 - **Gebaut:**

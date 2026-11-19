@@ -5,6 +5,8 @@ Ideen ergänzen, statt sie sofort zu bauen.
 
 ## Qualität und Werkzeuge
 - Jenkins vollständig als Code (Configuration as Code, Job DSL)
+- Offline-Betrieb: `just offline-prepare` (Images, Pakete, Browser vorab laden);
+  in S3 gestrichen, weil vor Ort WLAN da ist
 - pre-commit mit Robocop, ruff, pytest
 - Devcontainer für einen Start mit einem Befehl
 - Eigene Robocop-Regeln (kein `Sleep`, Pflicht-Dokumentation, Schichtregeln)
