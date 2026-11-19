@@ -1,0 +1,4 @@
+# Das Jenkins-Image braucht aus dem Repo nur die Paketliste (siehe jenkins/Dockerfile).
+*
+!pyproject.toml
+!uv.lock
