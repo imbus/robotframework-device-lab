@@ -175,6 +175,51 @@ Jede Session ergänzt hier einen Abschnitt.
   - Klassifizierung (ISK) auf der Titelfolie ist bewusst leer.
   - Ändern sich Diagramme in `docs/img/`, die Folien einfach neu erzeugen.
 
+### S5 – Spickzettel und Drehbuch (22.11.2026)
+
+- **Gebaut:**
+  - `docs/spickzettel.md` + `docs/spickzettel.css` → `docs/spickzettel.pdf` (ein Blatt A4, zwei Seiten).
+    Vorne: Test starten (VS Code und Kommandozeile, Profil, Tag, Trockenlauf, eigenes Profil), Ergebnisse
+    lesen, Fehlerkategorien mit echten Meldungen, Debuggen in drei Schritten. Hinten: Schichten und vier
+    Regeln, Namensregeln, Testdatenarten, QF-Test → Robot Framework (10 Zeilen, mit Beispiel aus dem Repo).
+  - `just spickzettel` (pandoc → HTML → Chrome headless → PDF); README: Befehl und Link unter „Mehr“.
+  - Design wie die Folien (Wunsch des Nutzers): grüner Akzentstrich über hellem Titel (Calibri Light)
+    mit grauer Unterzeile, Abschnitte als grüne Etiketten, Code auf Mint, Schritte und Regeln als Karten
+    mit Schatten, Fußzeile mit Seitenzahl. Beide Seiten grün (Blau für die Rückseite verworfen). Kein Logo
+    und kein „© imbus AG“, weil das Repo öffentlich ist. Calibri wird aus dem PowerPoint-Paket eingebettet;
+    Consolas aus Office lehnt Chrome ab („OTS parsing error“), daher Menlo.
+  - Stolperstein: Ist der Inhalt breiter als A4, verkleinert Chrome beim Drucken die ganze Seite und
+    Schriftgrößen wirken nicht. Deshalb darf Code nur in der Befehlstabelle umbrechen.
+  - Außerhalb des Repos: `workshop-material/drehbuch.md` mit Zeitplan 09:00–16:30 (Mittag 60 min,
+    zwei Kaffeepausen), je Block Minuten, Kernsatz, Demo-Schritte, erwartete Ausgabe, Fallback, Frage,
+    Übergang; Ratespiel, Quiz-Lösungen, Checkliste „30 Minuten vorher“, Liste der Screencasts.
+  - `workshop-material/fallback/`: echte Ergebnisse jeder Demo (Variante A/B, Quiz 1–3, Variante C,
+    kaputtes Profil, Anti-Pattern, Stecker ziehen), `09_lint.txt`, fertige `variante_c.json`.
+- **Starten mit:** `just spickzettel`; Drehbuch in `../workshop-material/drehbuch.md`.
+- **Akzeptanzkriterien:**
+  - Spickzettel auf einem Blatt: PDF hat genau 2 Seiten, nur Begriffe, die auf dem Blatt erklärt
+    sind ✔
+  - Jeder Befehl im Drehbuch einmal ausgeführt ✔ (Ausnahmen: `just sim` lief schon als Prozess des Nutzers;
+    „Stecker ziehen“ mit eigenem Mock auf Port 8090 per `--variable DEVICEHUB_URL:…`, um den laufenden Mock
+    nicht zu beenden; Debuggen in RobotCode ist GUI und steht als Probe in der Checkliste).
+    Jenkins-Build #4 grün in 21 s.
+  - Jede Live-Demo hat einen benannten Fallback ✔ (Ordner in `fallback/`; für Stecker ziehen und Jenkins
+    zusätzlich Screencasts)
+- **Abweichungen vom Auftrag:**
+  - Fallback meist gespeicherte Ergebnisse statt Screencast (Entscheidung des Nutzers); nur zwei
+    Screencasts, die der Nutzer aufnimmt.
+  - Spickzettel zusätzlich mit Testdatenarten und Namensregeln (Platz war da).
+- **Offen / Hinweise:**
+  - Anti-Pattern repariert: Variante A liest wieder `Read Register    30001` (nach Commit `8cc625c` war
+    es `31001` → rot, 10 Befunde). Jetzt `just antipattern` 2/2 grün, `just lint` 9 Befunde; Kommentar
+    oben auf Folie 20 statt 18 korrigiert.
+  - Screencasts `screencasts/07_stecker_ziehen.mov` und `screencasts/09_jenkins.mov` aufnehmen;
+    Anleitung mit Vorbereitung und Szenen im Drehbuch, Abschnitt „Screencasts aufnehmen“.
+  - Am Messungstest stehen keine Geräte-Metadaten mehr (Commit `8cdf3af`); Firmware und Seriennummer zeigt
+    der Report am Smoke- und am Web-UI-Test. Drehbuch Block 3 ist darauf abgestimmt.
+  - Folie 7 sagt „Strg-Klick“; auf dem Mac ist es ⌘-Klick (im Drehbuch vermerkt).
+  - Ändern sich Tests, die Fallback-Ergebnisse neu erzeugen (Anleitung am Ende des Drehbuchs).
+
 ### S1 – Mock-Gerät, Library, Testdaten, robot.toml (18.11.2026)
 
 - **Gebaut:**
