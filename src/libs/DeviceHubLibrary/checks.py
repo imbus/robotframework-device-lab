@@ -82,7 +82,10 @@ def _message(
 
 
 _HEADERS = ("Messpunkt", "Nr.", "Soll", "Ist", "Abweichung", "Toleranz", "Temperatur", "Ergebnis")
-_CELL = "border:1px solid #c8ccd2;padding:3px 10px;text-align:right;white-space:nowrap"
+# Feste dunkle Schrift: Im dunklen Log-Design wäre sie sonst hellgrau auf hellem Zellhintergrund.
+_CELL = (
+    "border:1px solid #c8ccd2;padding:3px 10px;text-align:right;white-space:nowrap;color:#1f1f1f"
+)
 
 
 def readings_table(checks: list[Check]) -> str:

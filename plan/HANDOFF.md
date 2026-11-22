@@ -153,13 +153,20 @@ Jede Session ergänzt hier einen Abschnitt.
   - Zusätzlich genutzte Vorlagen-Layouts: `1_Titel und Inhalt`, `1_4 Kacheln/Blöcke`,
     `1_6 Kacheln/Blöcke`. `1_Bild` nicht genutzt, weil es keinen Titel hat.
 - **Offen / Hinweise für die nächste Session:**
-  - Screenshots fehlen noch: `folien/screenshots/` mit `anatomie_testdatei.png`, `report.png`,
-    `log_messwerte.png`, `log_vorher.png`, `log_nachher.png` füllen, dann das Skript erneut starten.
+  - Screenshots eingebaut (22.11.): alle fünf aus `folien/screenshots/`, keine Platzhalter mehr.
+    Bildunterschrift Folie 22 jetzt „Vorher: nur „Messwert falsch““ / „Nachher: Messpunkt, Soll, Ist,
+    Toleranz“, Notiz dazu nach Anti-Pattern und `just quiz 2`. Notizen Folie 23 (Pre-Commit als
+    Empfehlung, im Lab nur `just lint` + Jenkins) und 25 (9 Befunde in `tests/04_antipatterns`, Jenkins
+    auf localhost:8081, ca. 20 s, Screencast als Rückfall) an S3 angepasst.
+  - `log_vorher.png` und `log_nachher.png` am 22.11. als Ausschnitte neu aufgenommen: kein lokaler Pfad
+    mehr, auf der Folie lesbar. Alle fünf Screenshots sind ohne Pfad, Benutzer- und Kundennamen geprüft.
+  - Messwert-Tabelle im Log war im dunklen Log-Design kaum lesbar (hellgraue Schrift auf hellgrünem Grund).
+    Behoben am 22.11. auf Wunsch des Nutzers: `_CELL` in `src/libs/DeviceHubLibrary/checks.py` setzt
+    `color:#1f1f1f`, Abweichungen bleiben rot. `log_messwerte.png` danach neu aufnehmen.
   - An S2 angeglichen (18.11.): Diagramme `schichten`, `fehlerkategorien`, `siedlung`, `gtaa` ohne
     technische Resource-Schicht (Workflow → Fachlich → Python) und mit den neuen Ordnern; Folie 8
     (`robot --pythonpath .:src/libs … tests/02_messung`, gegen einen Mock geprüft), Folie 13 und 20
     (Code aus `tests/02_messung` und `tests/antipatterns`), Notizen zu Quiz, Variante C, Stecker ziehen.
-  - Nach S3 abgleichen: `just lint` und Jenkins in den Notizen der Folien 23–25.
   - Fachlich prüfen: Pilotkarten S/M/L (Folie 27) und KI-Joker (Folie 29).
   - Klassifizierung (ISK) auf der Titelfolie ist bewusst leer.
   - Ändern sich Diagramme in `docs/img/`, die Folien einfach neu erzeugen.
