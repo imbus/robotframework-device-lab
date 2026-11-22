@@ -1,6 +1,6 @@
 *** Comments ***
 Botschaft: Absichtlich schlecht – läuft grün, aber Logik, Sleep, Registeradressen und Kopien stehen
-im Test; die gute Lösung ist tests/02_messung/messung_durchfuehren.robot (Block 7, Folie 18).
+im Test; die gute Lösung ist tests/02_messung/messung_durchfuehren.robot (Block 7, Folie 20).
 Vorhersage: Der Lauf ist grün – woran sieht man im Log trotzdem, dass dieser Test schlecht ist?
 
 
@@ -18,7 +18,7 @@ Messung Variante A
     FOR    ${soll}    IN    5.0    12.0    24.0
         Write Register    40001    ${soll}
         Sleep    2s
-        ${ist}=    Read Register    31001    #31003
+        ${ist}=    Read Register    30001
         IF    abs(${ist} - ${soll}) > ${soll} * 0.01
             Fail    Messwert falsch
         END
