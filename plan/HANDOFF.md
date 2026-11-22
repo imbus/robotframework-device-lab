@@ -126,7 +126,7 @@ Jede Session ergänzt hier einen Abschnitt.
 ### S4 – Diagramme und Folien (18.11.2026)
 
 - **Gebaut:**
-  - Folien außerhalb des Repos in `workshop-material/folien/`: `rf-workshop.pptx` (28 Folien + 1 Joker)
+  - Folien außerhalb des Repos in `workshop-material/folien/`: `rf-workshop.pptx` (29 Folien + 1 Joker)
     und `rf-workshop.pdf` als Vorschau, erzeugt von `erzeuge_folien.py` aus der Vorlage
     (alle Vorlagenfolien entfernt, nur Layouts der Vorlage, Metadaten der Vorlage neutralisiert).
   - Live-Demo-Folien im Layout `1_Zitat green imbus`: Play-Symbol, „Live in VS Code“, ein Satz,
@@ -145,7 +145,7 @@ Jede Session ergänzt hier einen Abschnitt.
 - **Abweichungen vom Auftrag:**
   - Kein Kapiteltrenner pro Block: Der Blockname steht als Unterzeile unter jedem Titel, nur der
     Nachmittag beginnt mit einem Kapiteltrenner (Entscheidung des Nutzers).
-  - 28 + 1 statt ca. 25 + 2 Folien: Nach dem Feedback des Nutzers kamen „Was RF ist und was nicht“,
+  - 29 + 1 statt ca. 25 + 2 Folien: Nach dem Feedback des Nutzers kamen „Was RF ist und was nicht“,
     die klassische gTAA und eine Anti-Pattern-Übersicht dazu; das Orchester steckt nur noch in Titel
     und Notiz der Landschaftsfolie; die beiden KI-Joker sind zu einem zusammengelegt.
   - Gestrichen: „QF-Test → Robot Framework“ (reine Textfolie, steht auf dem Spickzettel).
@@ -155,19 +155,22 @@ Jede Session ergänzt hier einen Abschnitt.
 - **Offen / Hinweise für die nächste Session:**
   - Screenshots eingebaut (22.11.): alle fünf aus `folien/screenshots/`, keine Platzhalter mehr.
     Bildunterschrift Folie 22 jetzt „Vorher: nur „Messwert falsch““ / „Nachher: Messpunkt, Soll, Ist,
-    Toleranz“, Notiz dazu nach Anti-Pattern und `just quiz 2`. Notizen Folie 23 (Pre-Commit als
-    Empfehlung, im Lab nur `just lint` + Jenkins) und 25 (9 Befunde in `tests/04_antipatterns`, Jenkins
+    Toleranz“, Notiz dazu nach Anti-Pattern und `just quiz 2`. Notizen Folie 24 (Pre-Commit als
+    Empfehlung, im Lab nur `just lint` + Jenkins) und 26 (9 Befunde in `tests/04_antipatterns`, Jenkins
     auf localhost:8081, ca. 20 s, Screencast als Rückfall) an S3 angepasst.
   - `log_vorher.png` und `log_nachher.png` am 22.11. als Ausschnitte neu aufgenommen: kein lokaler Pfad
     mehr, auf der Folie lesbar. Alle fünf Screenshots sind ohne Pfad, Benutzer- und Kundennamen geprüft.
   - Messwert-Tabelle im Log war im dunklen Log-Design kaum lesbar (hellgraue Schrift auf hellgrünem Grund).
     Behoben am 22.11. auf Wunsch des Nutzers: `_CELL` in `src/libs/DeviceHubLibrary/checks.py` setzt
-    `color:#1f1f1f`, Abweichungen bleiben rot. `log_messwerte.png` danach neu aufnehmen.
+    `color:#1f1f1f`, Abweichungen bleiben rot. `log_messwerte.png` neu aufgenommen, Folien neu erzeugt.
   - An S2 angeglichen (18.11.): Diagramme `schichten`, `fehlerkategorien`, `siedlung`, `gtaa` ohne
     technische Resource-Schicht (Workflow → Fachlich → Python) und mit den neuen Ordnern; Folie 8
     (`robot --pythonpath .:src/libs … tests/02_messung`, gegen einen Mock geprüft), Folie 13 und 20
     (Code aus `tests/02_messung` und `tests/antipatterns`), Notizen zu Quiz, Variante C, Stecker ziehen.
-  - Fachlich prüfen: Pilotkarten S/M/L (Folie 27) und KI-Joker (Folie 29).
+  - Neu in Block 8 (22.11., Wunsch des Nutzers): Folie 23 „Die Messwert-Tabelle ist HTML, kein Bild“ –
+    Python-Code (`Log Readings Table`, `logger.info(html, html=True)`, leicht vereinfacht) neben dem
+    HTML, das in `log.html` ankommt. Ab hier verschieben sich die Foliennummern um eins.
+  - Fachlich prüfen: Pilotkarten S/M/L (Folie 28) und KI-Joker (Folie 30).
   - Klassifizierung (ISK) auf der Titelfolie ist bewusst leer.
   - Ändern sich Diagramme in `docs/img/`, die Folien einfach neu erzeugen.
 
