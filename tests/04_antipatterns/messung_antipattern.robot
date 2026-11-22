@@ -18,7 +18,7 @@ Messung Variante A
     FOR    ${soll}    IN    5.0    12.0    24.0
         Write Register    40001    ${soll}
         Sleep    2s
-        ${ist}=    Read Register    30001
+        ${ist}=    Read Register    3001    #30003
         IF    abs(${ist} - ${soll}) > ${soll} * 0.01
             Fail    Messwert falsch
         END

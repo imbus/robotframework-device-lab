@@ -23,8 +23,5 @@ Messwerte im Toleranzband
     [Documentation]    Alle Messpunkte liefern Spannungen und Temperaturen innerhalb der Grenzen.
     [Metadata]    Anforderung    REQ-MM100-012
     [Metadata]    Prüfvorschrift    PV-MM100-03 Messgenauigkeit
-    [Metadata]    Firmware    ${GERAET}[firmware_version]
-    [Metadata]    Seriennummer    ${GERAET}[serial_number]
-    [Metadata]    Variante    ${GERAET}[model] ${GERAET}[variant]
     ${messwerte}=    Messung durchführen
     Messergebnis bewerten    ${messwerte}
