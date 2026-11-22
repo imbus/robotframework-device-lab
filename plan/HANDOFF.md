@@ -121,7 +121,8 @@ Jede Session ergänzt hier einen Abschnitt.
   - `just format` einmal über alle Dateien gelaufen (Settings-Spalte 17 statt 20). In `.vscode/settings.json`
     ist Robocop für RobotCode aus; formatiert VS Code anders, wechseln sich beide ab.
   - S4: `just lint` und Jenkins in den Notizen der Folien 23–25 abgleichen.
-  - CLAUDE.md weiterhin nicht an S2 angepasst (siehe S2).
+  - CLAUDE.md am 22.11. an den Stand nach S2/S3 angepasst (Ordner, Schichten ohne `technisch/`,
+    „Setup failed“, Browser Batteries, Docker Desktop, Commits durch den Nutzer).
 
 ### S4 – Diagramme und Folien (18.11.2026)
 

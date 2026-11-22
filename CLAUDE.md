@@ -21,9 +21,10 @@ die Tests bleiben generisch.
 
 - **Keine Kundendaten, keine Kundennamen, keine Kopien interner Kundenwerkzeuge.** Alles ist
   generisch und frei erfunden. Das Mock-Werkzeug heißt `DeviceHub`.
-- **Alles läuft lokal** (macOS, Apple Silicon, Rancher Desktop als Docker-Laufzeit).
-- **Offline-fähig** nach einmaligem Setup.
-- **Vorführtauglich:** kurze, gut lesbare Ausgaben, ein Befehl pro Aktion (`just …`).
+- **Alles läuft lokal** (macOS, Apple Silicon; Docker Desktop oder Rancher Desktop nur für Jenkins).
+- **Ohne Internet lauffähig** nach `just setup` (Mock und Tests); Jenkins braucht Internet nur
+  beim ersten Bau des Images.
+- **Vorführtauglich:** kurze, gut lesbare Ausgaben, ein Befehl pro Aktion (`just …`, Liste: `just`).
 
 ## Namen
 
@@ -31,42 +32,49 @@ die Tests bleiben generisch.
 |---|---|
 | Repo | `robotframework-device-lab` |
 | Mock-Werkzeug (REST) | `DeviceHub` (Python-Paket `devicehub`) |
-| Gerät | Messmodul `MM-100`, Varianten `A` und `B` |
+| Gerät | Messmodul `MM-100`, Varianten `A` und `B` (der Mock kennt zusätzlich `C` für die Demo „neues Gerät“) |
 | Python-Library | `DeviceHubLibrary` |
 
-## Tech-Stack (Versionen beim ersten Setup festschreiben, `uv.lock` einchecken)
+## Tech-Stack (Versionen in `uv.lock`)
 
 - Python 3.14, **uv**
-- Robot Framework 7.x, **RobotCode** (VS Code) mit `robot.toml`
-- Browser Library für den einen Web-UI-Test
+- Robot Framework 7.x, **RobotCode** (VS Code und CLI) mit `robot.toml` und Profilen
+- Browser Library mit **Browser Batteries** (bringt Node.js mit) für den einen Web-UI-Test
 - FastAPI + Uvicorn für den Mock
-- **Robocop** mit Standardregeln
-- `just` als Befehlsläufer
+- **Robocop** mit Standardregeln (Konfiguration in `pyproject.toml`)
+- `just` als Befehlsläufer, Jenkins lokal in Docker (`just jenkins`)
 
 ## Architektur (gTAA-Bezug)
 
 ```
-Testdefinition   tests/  +  resources/{workflow,fachlich,technisch}/  +  testdata/
-Testausführung   Robot Framework, robot.toml-Profile, lokal oder Jenkins
-Testadaptierung  libraries/DeviceHubLibrary (Python)  +  Browser Library
+Testdefinition   tests/  +  src/resources/{workflow,fachlich}/  +  data/
+Testausführung   Robot Framework über RobotCode, robot.toml-Profile, lokal oder Jenkins
+Testadaptierung  src/libs/DeviceHubLibrary (Python)  +  Browser Library
 SUT              devicehub/ (Mock-Gerät mit REST-API und Web-UI)
 ```
 
-## Die drei Keyword-Schichten (verbindlich)
+## Die Keyword-Schichten (verbindlich)
 
 | Schicht | Ordner | Darf aufrufen | Beispiel |
 |---|---|---|---|
-| Workflow | `resources/workflow/` | nur fachliche Keywords | `Messung durchführen` |
-| Fachlich | `resources/fachlich/` | technische Keywords | `Messpunkt einstellen`, `Messwerte prüfen` |
-| Technisch | `resources/technisch/` | Library-Keywords | `Register schreiben`, `Gerätezustand abwarten` |
-| (Code) | `libraries/` | – | Python, englische Keyword-Namen |
+| Workflow | `src/resources/workflow/` | nur fachliche Keywords | `Messung durchführen`, `Messergebnis bewerten` |
+| Fachlich | `src/resources/fachlich/` | Library-Keywords | `Prüfstand vorbereiten`, `Spannungen prüfen` |
+| Technisch | `src/libs/DeviceHubLibrary/`, Browser | – | Python, englisch: `Run Measurement Group` |
+
+Es gibt **keine technische Resource-Schicht**: Die Python-Library (bzw. Browser) ist die technische
+Schicht; dünne 1:1-Umbenennungen in Robot wären eine Schicht zu viel.
 
 Regeln:
-1. Tests rufen **nur Workflow-Keywords** auf (Ausnahme: `tests/01_smoke`).
+
+1. Tests rufen **nur Workflow-Keywords** auf (Ausnahme: `tests/01_smoke`; Setup und Teardown
+   rufen fachliche Keywords direkt auf).
 2. **Keine technischen Daten im Test** (keine Registeradressen, URLs, Selektoren).
-3. **Keine Logik im Robot-Code:** Bedingungen, Schleifen über Daten, Umrechnungen und Toleranzen
-   gehören in Python. Robot beschreibt, Python rechnet.
+3. **Keine Logik im Robot-Code:** Bedingungen, Schleifen über Daten (auch über Messpunkte),
+   Umrechnungen und Toleranzen gehören in Python. Robot beschreibt, Python rechnet.
 4. Kein `Sleep`; gewartet wird auf Zustände.
+
+Bewusst schlecht: `tests/04_antipatterns/` bricht alle Regeln (Tag `antipattern`, läuft nur mit
+`just antipattern`, Robocop-Befunde nur dort).
 
 ## Sprache und Namen
 
@@ -74,8 +82,9 @@ Regeln:
 - Keyword-Namen: ein bis sechs Wörter, Form **Objekt + Verb im Infinitiv**
   (`Gerät hochfahren`, `Messwerte prüfen`). Einheitlich `prüfen`, `einstellen`, `abwarten`.
 - Jedes Keyword hat `[Documentation]` mit einem Satz.
+- Variablen mit `VAR` (mit `=`), nicht mit `Set … Variable`.
 
-## Testdaten (`testdata/devices/*.json`)
+## Testdaten (`data/devices/*.json`, Quiz-Daten in `data/quiz/`)
 
 Gegliedert nach Testdatenarten:
 
@@ -97,16 +106,19 @@ verständlicher Meldung (Feld und Erwartung).
 
 ## Berichte
 
-- `Metadata` in jeder Suite (Firmware, Seriennummer, Variante).
+- Gerätedaten (Firmware, Seriennummer, Variante) als `[Metadata]` am Test; `Prüfstand vorbereiten`
+  stellt sie als `${GERAET}` bereit.
 - Messwerte erscheinen im Log als **HTML-Tabelle** (Soll, Ist, Toleranz, Ergebnis).
 - Fehlermeldungen sagen, was erwartet und was gefunden wurde.
-- Fehler in der Vorbereitung brechen mit „Vorbereitung fehlgeschlagen: …“ ab.
+- Fehler im Setup meldet Robot als „Setup failed: …“ mit der Meldung der Library (kein eigenes TRY).
 - Teardown bringt das Gerät immer in einen sicheren Zustand.
 
 ## Arbeitsweise in Sessions
 
 - Erst den Plan zeigen, dann umsetzen. Im Zweifel die einfachere Lösung.
-- Kleine Commits mit deutschen Commit-Nachrichten.
+- **Commits macht der Nutzer selbst.** Claude schlägt Aufteilung und deutsche Commit-Nachrichten vor.
+- Prüfen mit `just …` und `uv run robotcode results …` statt langer Shell-Skripte.
 - Am Ende Akzeptanzkriterien prüfen und `plan/HANDOFF.md` ergänzen.
 - Ideen, die über den Auftrag hinausgehen, nicht bauen, sondern in `plan/LEUCHTTURM.md` notieren.
-- Nichts außerhalb des Repos verändern, keine Geheimnisse einchecken.
+- Außerhalb des Repos nur `../workshop-material/` (Folien, Drehbuch; nicht öffentlich).
+  Keine Geheimnisse einchecken.
