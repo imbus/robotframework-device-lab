@@ -68,3 +68,10 @@ docs:
         name=$(basename $(dirname $f))_$(basename $f .resource); \
         uv run robotcode libdoc $f docs/keywords/$name.html; \
     done
+
+# Spickzettel als PDF (ein Blatt A4, zwei Seiten) aus docs/spickzettel.md; braucht pandoc und Chrome
+spickzettel:
+    pandoc docs/spickzettel.md -s --embed-resources --css docs/spickzettel.css \
+        --metadata pagetitle=Spickzettel -o /tmp/spickzettel.html
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --no-pdf-header-footer \
+        --print-to-pdf=docs/spickzettel.pdf /tmp/spickzettel.html 2> /dev/null

@@ -34,6 +34,7 @@ Die Ergebnisse stehen danach in `results/log.html` und `results/report.html`.
 | `just lint` | Robocop prüft alle Robot-Dateien (Befunde nur im Anti-Pattern, gewollt) |
 | `just format` | Robot-Dateien mit Robocop formatieren |
 | `just docs` | Keyword-Doku nach `docs/keywords/` erzeugen |
+| `just spickzettel` | Spickzettel-PDF aus `docs/spickzettel.md` erzeugen (braucht pandoc und Chrome) |
 | `just jenkins` / `just jenkins-stop` | lokales Jenkins starten bzw. stoppen |
 
 ## Ordner
@@ -61,5 +62,6 @@ Aufrufkette: **Test → Workflow → Fachlich → Python-Library**
 
 ## Mehr
 
+- Spickzettel (ein Blatt): [`docs/spickzettel.md`](docs/spickzettel.md), als PDF [`docs/spickzettel.pdf`](docs/spickzettel.pdf)
 - Keyword-Doku: [`docs/keywords/`](docs/keywords/), erzeugen mit `just docs`
 - Jenkins einrichten: [`jenkins/EINRICHTUNG.md`](jenkins/EINRICHTUNG.md)
