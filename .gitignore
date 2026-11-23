@@ -21,3 +21,4 @@ docs/keywords/
 # Editor und Betriebssystem
 .DS_Store
 .idea/
+.vscode
