@@ -23,6 +23,8 @@ extend-variables = { GERAETEPROFIL = "data/devices/variante_a.json" }
 description = "Messmodul MM-100, Variante B"
 extend-variables = { GERAETEPROFIL = "data/devices/variante_b.json" }
 
+# Nur für Jenkins: "devicehub" ist der Mock-Container im Docker-Netz, auf dem Mac unbekannt.
+# Lokal nachstellen: uv run robotcode -p ci robot --variable DEVICEHUB_URL:http://127.0.0.1:8080
 [profiles.ci]
 description = "Jenkins: Mock im Container devicehub, Browser unsichtbar, ohne Farben"
 console-colors = "off"
