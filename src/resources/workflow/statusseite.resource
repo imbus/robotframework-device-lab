@@ -2,7 +2,6 @@
 Documentation    Workflow-Schicht: Inbetriebnahme über die Web-Oberfläche.
 
 Resource         src/resources/fachlich/statusseite.resource
-Resource         src/resources/fachlich/messung.resource
 
 Keyword Tags     workflow
 

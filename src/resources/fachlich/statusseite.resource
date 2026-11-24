@@ -27,5 +27,4 @@ Angezeigte Betriebsbereitschaft prüfen
 Status des Geräts entspricht
     [Documentation]    Prüft ob der Status des Geräts dem erwarteten Status entspricht
     [Arguments]    ${status: Literal['OFF', 'BOOTING', 'SETTLING', 'READY', 'MEASURING', 'FAULT']}
-    ${text}=    Get Text    data-testid=device-state
-    Should Be Equal    ${text}    ${status}
+    ${text}=    Get Text    data-testid=device-state    ==    ${status}
