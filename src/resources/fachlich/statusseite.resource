@@ -25,7 +25,7 @@ Angezeigte Betriebsbereitschaft prüfen
     Wait For Condition    Text    data-testid=device-state    ==    READY    timeout=15 s
 
 Status des Geräts entspricht
+    [Documentation]    Prüft ob der Status des Geräts dem erwarteten Status entspricht
     [Arguments]    ${status: Literal['OFF', 'BOOTING', 'SETTLING', 'READY', 'MEASURING', 'FAULT']}
-    ${text}    Get Text    data-testid=device-state
+    ${text}=    Get Text    data-testid=device-state
     Should Be Equal    ${text}    ${status}
-
