@@ -23,8 +23,3 @@ Gerät über Statusseite einschalten
 Angezeigte Betriebsbereitschaft prüfen
     [Documentation]    Wartet, bis die Statusseite das Gerät als messbereit (READY) anzeigt.
     Wait For Condition    Text    data-testid=device-state    ==    READY    timeout=15 s
-
-Status des Geräts entspricht
-    [Documentation]    Prüft ob der Status des Geräts dem erwarteten Status entspricht
-    [Arguments]    ${status: Literal['OFF', 'BOOTING', 'SETTLING', 'READY', 'MEASURING', 'FAULT']}
-    ${text}=    Get Text    data-testid=device-state    ==    ${status}
