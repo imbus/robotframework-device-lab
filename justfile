@@ -37,6 +37,10 @@ quiz nummer:
 antipattern:
     uv run robotcode --profile antipattern robot
 
+# KI-Joker: lokales Vision-Modell liest die Statusseite ab (braucht Ollama, siehe tests/05_ai/README.md)
+ki *args:
+    uv run --group ai robotcode --profile ki robot {{args}}
+
 # Demo zurücksetzen: Mock-Fehler aus, Geräte aus, results/ leer; LÖSCHT neue Profile in data/devices/
 reset:
     -curl -sS -X POST http://127.0.0.1:8080/sim/reset

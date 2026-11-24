@@ -66,8 +66,8 @@ Schicht; dünne 1:1-Umbenennungen in Robot wären eine Schicht zu viel.
 
 Regeln:
 
-1. Tests rufen **nur Workflow-Keywords** auf (Ausnahme: `tests/01_smoke`; Setup und Teardown
-   rufen fachliche Keywords direkt auf).
+1. Tests rufen **nur Workflow-Keywords** auf (Ausnahmen: `tests/01_smoke` und der KI-Joker
+   `tests/05_ai` mit lokalen Keywords; Setup und Teardown rufen fachliche Keywords direkt auf).
 2. **Keine technischen Daten im Test** (keine Registeradressen, URLs, Selektoren).
 3. **Keine Logik im Robot-Code:** Bedingungen, Schleifen über Daten (auch über Messpunkte),
    Umrechnungen und Toleranzen gehören in Python. Robot beschreibt, Python rechnet.

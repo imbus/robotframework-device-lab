@@ -220,6 +220,48 @@ Jede Session ergänzt hier einen Abschnitt.
   - Folie 7 sagt „Strg-Klick“; auf dem Mac ist es ⌘-Klick (im Drehbuch vermerkt).
   - Ändern sich Tests, die Fallback-Ergebnisse neu erzeugen (Anleitung am Ende des Drehbuchs).
 
+### S6 – KI-Joker als Screencast (24.11.2026)
+
+- **Gebaut:**
+  - `tests/05_ai/display_check.robot`: Gerät mit 12 V betreiben → Statusseite öffnen → Screenshot →
+    `Chat` mit Bild und `output_type=${{display_reading.DisplayReading}}` am Aufruf → Vergleich mit dem
+    REST-Messwert. Tag `ki`, lokale Keywords (Ausnahme von Regel 1 wie `01_smoke`, in CLAUDE.md und
+    README vermerkt).
+  - `tests/05_ai/display_reading.py`: Dataclass `DisplayReading(value, unit)` und Keyword
+    `Display Reading Should Match` (Einheit V, höchstens 1 % Abweichung; Python rechnet).
+  - `tests/05_ai/README.md`: Einrichtung, Anbindung von aiagent an Ollama, Modellwahl mit Messwerten,
+    je drei Chancen und Grenzen. `tests/05_ai/beispiel-log/` mit `log.html` und Bildern (Ausnahme in
+    `.gitignore`).
+  - `pyproject.toml`: Abhängigkeitsgruppe `ai` (`robotframework-aiagent-slim[openai]` 0.4.1, zieht
+    pydantic-ai-slim 2.73). `robot.toml`: Profil `ki` mit `OLLAMA_BASE_URL` unter `env`,
+    `tests/05_ai` im Python-Pfad, Tag `ki` standardmäßig ausgeschlossen. `just ki`.
+  - Auf dem Mac: `brew install ollama`, Modell `qwen3-vl:8b` (ca. 6 GB).
+  - Drehbuch (außerhalb des Repos): Abschnitt Puffer/KI-Joker verweist auf den Screencast,
+    Anleitung `screencasts/10_ki_joker.mov` unter „Screencasts aufnehmen“.
+- **Starten mit:** `just sim`, `ollama serve`, `just ki`.
+- **Akzeptanzkriterien:**
+  - Demo läuft lokal ohne Internet ✔: `uv run --offline --group ai robotcode --profile ki robot` mit
+    Proxy ins Leere (`HTTP(S)_PROXY=127.0.0.1:9`, nur `127.0.0.1`/`localhost` ausgenommen) grün;
+    `curl https://pypi.org` scheitert dabei. Ollama und Mock laufen auf `127.0.0.1`.
+  - Keine API-Schlüssel im Repo ✔: pydantic-ai setzt für Ollama einen Platzhalter; Suche nach
+    `api_key`, `sk-…`, `secret`, `token` findet nur den erklärenden Satz in der README.
+  - Außerdem: `just test` 3/3 grün (KI-Joker ausgeschlossen), `just dryrun` und `just ki --dryrun`
+    grün, Robocop in `tests/05_ai` ohne Befund, ruff grün, VS Code ohne Diagnose.
+- **Abweichungen vom Auftrag:**
+  - Ordner `tests/05_ai/` statt `ai/` (vom Nutzer verschoben), daher Tag `ki` als Ausschluss wie beim
+    Anti-Pattern.
+  - Den Screencast nimmt der Nutzer auf; Claude hat das Beispiel-Log abgelegt und die Anleitung
+    geschrieben.
+  - `output_type` steht am `Chat` (Wunsch des Nutzers), nicht beim Library-Import.
+- **Offen / Hinweise:**
+  - `Chat` braucht warm ca. 14 s, beim ersten Aufruf ca. 20 s (Modell laden). Ohne Thinking ca. 11 s;
+    bewusst an, weil die Begründung im Log für die Demo zählt.
+  - `just setup` (`uv sync`) entfernt die Gruppe `ai` wieder; `just ki` installiert sie aus dem uv-Cache
+    nach. VS Code markiert `AIAgent` nur dann rot, wenn die Gruppe fehlt.
+  - `beispiel-log/log.html` enthält absolute Pfade mit dem Benutzernamen (wie alle Robot-Logs).
+  - `src/resources/fachlich/statusseite.resource` hat ein uncommittetes `Sleep    2s` (nicht aus S6):
+    verstößt gegen Regel 4, `just lint` meldet dadurch 10 statt 9 Befunde.
+
 ### S1 – Mock-Gerät, Library, Testdaten, robot.toml (18.11.2026)
 
 - **Gebaut:**

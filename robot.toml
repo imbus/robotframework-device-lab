@@ -5,10 +5,11 @@
 paths = ["tests"]
 output-dir = "results"
 # "." = Repo-Wurzel: Resources werden als src/resources/… importiert, ohne ../
-# src/libs: Python-Libraries, z. B. "Library    DeviceHubLibrary"
-python-path = [".", "src/libs"]
-# Das absichtlich schlechte Beispiel läuft nur mit: just antipattern
-excludes = ["antipattern"]
+# src/libs: Python-Libraries, z. B. "Library    DeviceHubLibrary"; tests/05_ai: Python-Teil des KI-Jokers
+python-path = [".", "src/libs", "tests/05_ai"]
+# Laufen nur mit eigenem Befehl: das absichtlich schlechte Beispiel (just antipattern) und der
+# KI-Joker (just ki, braucht Ollama)
+excludes = ["antipattern", "ki"]
 
 [variables]
 DEVICEHUB_URL = "http://127.0.0.1:8080"
@@ -37,6 +38,14 @@ DEVICEHUB_URL = "http://devicehub:8080"
 description = "Absichtlich schlechtes Beispiel (Block 7)"
 paths = ["tests/04_antipatterns"]
 excludes = []
+
+# KI-Joker (Screencast): lokales Vision-Modell über Ollama, ohne API-Schlüssel.
+# Starten mit: just ki   (Einrichtung: tests/05_ai/README.md)
+[profiles.ki]
+description = "KI-Joker: Statusseite mit lokalem Vision-Modell ablesen"
+paths = ["tests/05_ai"]
+excludes = []
+env = { OLLAMA_BASE_URL = "http://127.0.0.1:11434/v1" }
 
 # Fehler-Quiz (Block 4): Jedes Profil lässt die Messung aus einem anderen Grund scheitern.
 # Starten mit: just quiz 1   (Auflösung in plan/HANDOFF.md, Abschnitt S2)

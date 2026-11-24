@@ -14,6 +14,8 @@ output.xml
 browser/
 playwright-log.txt
 docs/keywords/
+# Beispiel-Log des KI-Jokers bleibt im Repo
+!tests/05_ai/beispiel-log/**
 
 # Persönliche RobotCode-Einstellungen
 .robot.toml

@@ -17,6 +17,10 @@ dependencies = [
 ]
 
 [dependency-groups]
+# Nur für den KI-Joker in tests/05_ai/ (just ki lädt die Gruppe); just setup bleibt ohne KI-Pakete.
+ai = [
+    "robotframework-aiagent-slim[openai]>=0.4,<0.5",
+]
 dev = [
     "pytest>=9.2,<10",
 ]

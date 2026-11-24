@@ -30,6 +30,7 @@ Die Ergebnisse stehen danach in `results/log.html` und `results/report.html`.
 | `just test-a` / `just test-b` | alle Tests gegen Variante A bzw. B |
 | `just quiz <n>` | Fehler-Quiz 1, 2 oder 3: Die Messung scheitert. Warum? |
 | `just antipattern` | absichtlich schlechtes Beispiel ausführen |
+| `just ki` | KI-Joker: lokales Vision-Modell liest die Statusseite ab ([Einrichtung](tests/05_ai/README.md)) |
 | `just reset` | Demo zurücksetzen (Mock-Fehler aus, `results/` leer, neue Geräteprofile gelöscht) |
 | `just lint` | Robocop prüft alle Robot-Dateien (Befunde nur im Anti-Pattern, gewollt) |
 | `just format` | Robot-Dateien mit Robocop formatieren |
@@ -41,7 +42,7 @@ Die Ergebnisse stehen danach in `results/log.html` und `results/report.html`.
 
 | Ordner | Inhalt |
 | --- | --- |
-| `tests/` | die Testfälle: Smoke, Messung, Web-UI und das Anti-Pattern |
+| `tests/` | die Testfälle: Smoke, Messung, Web-UI, das Anti-Pattern und der KI-Joker |
 | `src/resources/workflow/` | Workflow-Keywords: ganze Abläufe, z. B. `Messung durchführen` |
 | `src/resources/fachlich/` | fachliche Keywords: einzelne Schritte, z. B. `Spannungen prüfen` |
 | `src/libs/DeviceHubLibrary/` | Python-Library: spricht REST mit dem Gerät, rechnet und prüft |
@@ -55,7 +56,7 @@ Die Ergebnisse stehen danach in `results/log.html` und `results/report.html`.
 
 Aufrufkette: **Test → Workflow → Fachlich → Python-Library**
 
-1. Tests rufen nur Workflow-Keywords auf (Ausnahme: `tests/01_smoke`).
+1. Tests rufen nur Workflow-Keywords auf (Ausnahmen: `tests/01_smoke`, `tests/05_ai`).
 2. Keine technischen Daten im Test: keine Registeradressen, URLs oder Selektoren.
 3. Keine Logik im Robot-Code: Robot beschreibt, Python rechnet.
 4. Kein `Sleep`: Gewartet wird auf Zustände.
