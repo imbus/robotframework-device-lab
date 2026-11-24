@@ -27,12 +27,6 @@ ${KI_MODELL}    ollama:qwen3-vl:8b
 
 
 *** Test Cases ***
-Irgendeine Frage
-    [Documentation]    Stellt eine einfache Frage
-    [Setup]    ${None}
-    Chat    Welche interessanten Fakten gibt es über Köln? Nenne mir 3.
-    [Teardown]    ${None}
-
 Statusseite zeigt den REST-Messwert an
     [Documentation]    Das Modell liest den Messwert vom Bildschirmfoto; er passt zum REST-Messwert.
     Gerät mit 12 V betreiben
