@@ -28,9 +28,9 @@ ${KI_MODELL}    ollama:qwen3-vl:8b
 
 *** Test Cases ***
 Irgendeine Frage
+    [Documentation]    Stellt eine einfache Frage
     [Setup]    ${None}
-    ${result}    Chat    Welche interessanten Fakten gibt es über Köln? Nenne mir 3.
-    Log    ${result}
+    Chat    Welche interessanten Fakten gibt es über Köln? Nenne mir 3.
     [Teardown]    ${None}
 
 Statusseite zeigt den REST-Messwert an
@@ -40,6 +40,7 @@ Statusseite zeigt den REST-Messwert an
     ${messwert_abgelesen}=    Messwert mit KI ablesen
     Abgelesenen Messwert prüfen    ${messwert_abgelesen}
     Log    ${messwert_abgelesen.value} ${messwert_abgelesen.unit}
+
 
 *** Keywords ***
 Gerät mit 12 V betreiben
@@ -58,7 +59,7 @@ Messwert mit KI ablesen
     [Documentation]    Fotografiert die Statusseite und lässt das Modell Wert und Einheit ablesen.
     ${foto}=    Take Screenshot    filename=statusseite
     ${bild}=    Load Binary Content    ${foto}
-    ${anzeige}=    Chat    Welcher Messwert steht auf dieser Statusseite? Wert und Einheit.    
+    ${anzeige}=    Chat    Welcher Messwert steht auf dieser Statusseite? Wert und Einheit.
     ...    ${bild}
     ...    output_type=${{display_reading.DisplayReading}}
     RETURN    ${anzeige}
