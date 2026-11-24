@@ -29,7 +29,7 @@ ${KI_MODELL}    ollama:qwen3-vl:8b
 *** Test Cases ***
 Irgendeine Frage
     [Setup]    ${None}
-    ${result}    Chat    Wie wird das Wetter morgen in Köln?
+    ${result}    Chat    Welche interessanten Fakten gibt es über Köln? Nenne mir 3.
     Log    ${result}
     [Teardown]    ${None}
 
