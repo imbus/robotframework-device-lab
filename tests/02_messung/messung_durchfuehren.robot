@@ -21,7 +21,7 @@ Test Tags        messung
 *** Test Cases ***
 Messwerte im Toleranzband
     [Documentation]    Alle Messpunkte liefern Spannungen und Temperaturen innerhalb der Grenzen.
-    [Metadata]    Anforderung    REQ-MM100-012
+    [Metadata]    Anforderung    [https://example.com|REQ-MM100-012]
     [Metadata]    Prüfvorschrift    PV-MM100-03 Messgenauigkeit
     ${messwerte}=    Messung durchführen
     Messergebnis bewerten    ${messwerte}
