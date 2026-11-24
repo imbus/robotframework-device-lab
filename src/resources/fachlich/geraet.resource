@@ -17,10 +17,10 @@ Prüfstand vorbereiten
     [Documentation]    Lädt das Geräteprofil, verbindet das Gerät und stellt die Simulation ein.
     Load Device Profile    ${GERAETEPROFIL}
     Connect To DeviceHub    ${DEVICEHUB_URL}
-    Gerätedaten bereitstellen
+    Configure Device Data
     Set Simulated Fault    ${SIMULATIONSFEHLER}
 
-Gerätedaten bereitstellen
+Configure Device Data
     [Documentation]    Liest Firmware, Seriennummer und Variante und stellt sie als ${GERAET} bereit.
     ${daten}=    Get Device Metadata
     VAR    &{GERAET}=    &{daten}    scope=SUITE    # robocop: off=no-suite-variable
